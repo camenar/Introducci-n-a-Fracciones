@@ -15,366 +15,464 @@
 :root{
   --navy:#0F2040;--blue:#1C3A6E;--blue-mid:#2E75B6;
   --teal:#1A6B5A;--amber:#C47C1A;--red:#B83232;--purple:#6C3483;
-  --cream:#F4F3EF;--warm:#EDECEA;--border:#D8D5CC;
-  --text:#1C1C1E;--text2:#3A3A3C;--text3:#6B6B6E;
+  --cream:#F4F3EF;--warm:#EDECEA;--border:#C0BDB4;
+  --text:#0A0A0B;--text2:#2A2A2C;--text3:#4A4A4E;
   --green-s:#27AE60;--amber-s:#E08C20;--red-s:#C0392B;
 }
 html,body{width:100%;height:100%;overflow:hidden;background:#111;font-family:'DM Sans',system-ui,sans-serif}
-
-/* DECK */
 #deck{width:100vw;height:100vh;position:relative;overflow:hidden}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;background:var(--cream)}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;background:#fff}
 .slide.active{opacity:1;pointer-events:all}
-.slide.enter-r{animation:inR .4s cubic-bezier(.22,.68,0,1.15) forwards}
-.slide.enter-l{animation:inL .4s cubic-bezier(.22,.68,0,1.15) forwards}
-@keyframes inR{from{transform:translateX(5%);opacity:0}to{transform:none;opacity:1}}
-@keyframes inL{from{transform:translateX(-5%);opacity:0}to{transform:none;opacity:1}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-
+.slide.enter-r{animation:inR .35s cubic-bezier(.22,.68,0,1.15) forwards}
+.slide.enter-l{animation:inL .35s cubic-bezier(.22,.68,0,1.15) forwards}
+@keyframes inR{from{transform:translateX(4%);opacity:0}to{transform:none;opacity:1}}
+@keyframes inL{from{transform:translateX(-4%);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+ 
 /* HEADER */
-.hdr{background:var(--navy);height:50px;display:flex;align-items:center;padding:0 30px;justify-content:space-between;flex-shrink:0}
-.hdr-b{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#A8C4E8}
-.hdr-t{background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:4px;letter-spacing:.07em;text-transform:uppercase}
-
+.hdr{background:var(--navy);height:54px;display:flex;align-items:center;padding:0 32px;justify-content:space-between;flex-shrink:0}
+.hdr-b{font-size:18px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#C8DDEF}
+.hdr-t{background:var(--blue-mid);color:#fff;font-size:17px;font-weight:800;padding:8px 22px;border-radius:5px;letter-spacing:.06em;text-transform:uppercase}
+ 
 /* FOOTER */
-.ftr{background:var(--warm);border-top:1px solid var(--border);height:36px;display:flex;align-items:center;padding:0 30px;justify-content:space-between;flex-shrink:0}
-.ftr span{font-size:12px;color:var(--text3)}
-
+.ftr{background:var(--warm);border-top:2px solid var(--border);height:44px;display:flex;align-items:center;padding:0 32px;justify-content:space-between;flex-shrink:0}
+.ftr span{font-size:18px;color:var(--text3);font-weight:600}
+ 
 /* BODY */
-.body{flex:1;overflow:hidden;padding:26px 38px 18px;display:flex;flex-direction:column;gap:16px}
-
-/* TYPOGRAPHY — tamaños para proyección */
-.slide-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,42px);color:var(--text);line-height:1.15}
-.slide-instr{font-size:clamp(16px,1.8vw,20px);color:var(--text2);font-style:italic;margin-top:5px}
-.title-row{display:flex;align-items:flex-start;gap:14px}
-.accent{width:8px;border-radius:4px;flex-shrink:0;margin-top:5px}
-
+.body{flex:1;overflow:hidden;padding:24px 42px 18px;display:flex;flex-direction:column;gap:16px}
+ 
+/* TIPOGRAFÍA */
+.slide-title{font-family:'DM Serif Display',serif;font-size:clamp(48px, 5.5vw, 72px);color:var(--navy);line-height:1.1}
+.slide-instr{font-size:clamp(26px, 3vw, 32px);color:var(--text2);font-style:italic;margin-top:4px;line-height:1.4}
+.title-row{display:flex;align-items:flex-start;gap:20px}
+.accent{width:12px;border-radius:5px;flex-shrink:0;align-self:stretch;min-height:52px}
+ 
+/* MOMENTO BADGE */
+.mbadge{display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;font-size:19px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:6px;margin-bottom:4px}
+ 
 /* KATEX */
 .katex{font-size:1em!important}
-.katex-display{font-size:1.1em!important;margin:0!important}
-.formula-row .katex,.ej-frac .katex,.fml .katex{font-size:1.9em!important;color:var(--text)!important}
-.fml.dark .katex{color:#fff!important}
-
-/* ── PORTADA ── */
+.katex-display{font-size:1em!important;margin:0!important}
+.formula-row .katex,.hac-answer .katex{font-size:3.2em!important;color:var(--text)!important}
+.ej-frac .katex{font-size:5em!important;color:var(--text)!important}
+.fml .katex{font-size:4.2em!important;color:var(--navy)!important}
+.vote-btn .katex{font-size:2.2em!important}
+.answer-txt .katex{font-size:2.4em!important}
+ 
+/* PORTADA */
 .s-portada{background:var(--navy);align-items:center;justify-content:center}
-.p-inner{display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;padding:40px;width:100%}
-.p-badge{font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:#A8C4E8;font-weight:600}
-.p-title{font-family:'DM Serif Display',serif;font-size:clamp(64px,9vw,108px);color:#fff;line-height:1;animation:fadeUp .8s .1s both}
-.p-title em{color:var(--amber);font-style:normal}
-.p-sub{font-size:clamp(20px,2.3vw,28px);color:#A8C4E8;animation:fadeUp .8s .3s both}
-.p-sessions{display:flex;gap:24px;margin-top:8px;animation:fadeUp .8s .5s both;width:100%;justify-content:center}
-.psess{background:rgba(255,255,255,.07);border:1px solid rgba(168,196,232,.2);border-radius:16px;padding:26px 34px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;max-width:280px}
-.psess-n{width:50px;height:50px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:20px}
-.psess-t{font-size:18px;font-weight:600;color:#fff;text-align:center}
-.psess-s{font-size:15px;color:#A8C4E8;font-style:italic;text-align:center}
+.p-inner{display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;padding:40px;width:100%;max-width:1400px}
+.p-badge{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#C8DDEF;font-weight:600}
+.p-title{font-family:'DM Serif Display',serif;font-size:clamp(80px, 13vw, 160px);color:#fff;line-height:1;animation:fadeUp .8s .1s both}
+.p-title em{color:#F5C842;font-style:normal}
+.p-sub{font-size:clamp(28px, 3vw, 38px);color:#C8DDEF;animation:fadeUp .8s .3s both}
+.p-sessions{display:flex;gap:24px;margin-top:6px;animation:fadeUp .8s .5s both;width:100%;justify-content:center}
+.psess{background:rgba(255,255,255,.09);border:1px solid rgba(200,221,239,.25);border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;max-width:320px}
+.psess-n{width:60px;height:60px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:26px}
+.psess-t{font-size:24px;font-weight:600;color:#fff;text-align:center;line-height:1.3}
+.psess-s{font-size:19px;color:#C8DDEF;font-style:italic;text-align:center}
+ 
+/* ═══════════════════════════════════════════════════════════════
+   SLIDE 2 - DISEÑO PANEL AZUL IZQUIERDA
+   ═══════════════════════════════════════════════════════════════ */
+.sess-split {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.sess-left {
+  width: 35%;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
+}
+.sess-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(120px, 16vw, 240px);
+  line-height: 1;
+  font-weight: 400;
+}
+.sess-label {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8CA3C1; /* Azul grisáceo claro para contraste elegante */
+}
+.sess-right {
+  flex: 1;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
 
-/* ── SESIÓN PORTADA ── */
-.s-sesion{flex-direction:row;background:var(--cream)}
-.pan{width:220px;flex-shrink:0;background:var(--blue);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
-.pan-n{font-family:'DM Serif Display',serif;font-size:140px;line-height:1;color:#fff}
-.pan-l{font-size:19px;font-weight:700;letter-spacing:.2em;color:#A8C4E8;text-transform:uppercase}
-.sess-content{flex:1;padding:38px 44px;display:flex;flex-direction:column;gap:20px;overflow:hidden}
-.sess-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,3.8vw,44px);color:var(--blue);line-height:1.15}
-.divider{height:2px;background:var(--border);border-radius:1px}
-.obj-list{display:flex;flex-direction:column;gap:13px}
-.obj-item{display:flex;align-items:flex-start;gap:15px;background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid var(--blue-mid);font-size:clamp(16px,1.8vw,20px);color:var(--text)}
-.obj-dot{width:28px;height:28px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
-.tiempo{background:var(--warm);border:1px solid var(--border);border-radius:10px;padding:13px 22px;font-size:clamp(15px,1.7vw,19px);font-weight:600;color:var(--blue);text-align:center}
+.obj-list-full {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.obj-item-full {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 18px 24px;
+  border-left: 8px solid var(--blue-mid);
+  font-size: clamp(22px, 2.4vw, 28px);
+  color: var(--text);
+  line-height: 1.35;
+  width: 100%;
+}
+.obj-dot-full {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
 
-/* ── DETONANTE ── */
-.det-box{background:#FFF8F0;border:2.5px solid var(--amber);border-radius:14px;padding:24px 30px;flex:1;display:flex;flex-direction:column;gap:14px}
-.det-label{font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--amber)}
-.det-text{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.4vw,28px);color:var(--text);line-height:1.55;font-style:italic}
-.det-ctx{font-size:clamp(15px,1.6vw,18px);color:var(--text3);line-height:1.5;border-top:1px solid var(--border);padding-top:12px}
+/* DETONANTE */
+.det-box{background:#FFF7ED;border:3px solid var(--amber);border-radius:14px;padding:20px 26px;flex:1;display:flex;flex-direction:column;gap:11px}
+.det-label{font-size:19px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
+.det-text{font-family:'DM Serif Display',serif;font-size:clamp(30px, 3.5vw, 42px);color:var(--text);line-height:1.5;font-style:italic}
 .pregs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.preg-card{background:#fff;border-radius:12px;border:1px solid var(--border);padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s}
+.preg-card{background:#fff;border-radius:12px;border:2px solid var(--border);border-top:5px solid var(--amber);padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:11px;text-align:center;opacity:0;transform:translateY(14px);transition:opacity .4s,transform .4s}
 .preg-card.vis{opacity:1;transform:none}
-.preg-n{width:42px;height:42px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:#fff}
-.preg-t{font-size:clamp(17px,1.9vw,22px);color:var(--text2);font-style:italic;line-height:1.4}
-
-/* ── YO HAGO ── */
-.s-yo{background:var(--navy)}
-.s-yo .hdr{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.1)}
-.s-yo .hdr-b{color:#A8C4E8}
-.s-yo .ftr{background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.1)}
-.s-yo .ftr span{color:#555}
-.s-yo .slide-title{color:#fff}
-.s-yo .slide-instr{color:#A8C4E8}
-.yo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1}
-.yo-panel{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:15px}
-.yo-pt{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A8C4E8}
-.frac-wrap{background:rgba(255,255,255,.05);border-radius:10px;padding:15px;display:flex;flex-direction:column;gap:9px}
-.frac-lbl{font-size:13px;color:#A8C4E8;text-align:center;font-style:italic}
-.formula-box{background:rgba(255,255,255,.07);border:1px solid rgba(168,196,232,.2);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:15px;flex:1}
-.formula-row{display:flex;align-items:center;justify-content:center;padding:15px;background:var(--warm);border-radius:10px}
-.vocab{background:var(--blue);border-radius:12px;padding:15px 22px;display:flex;justify-content:space-around;align-items:center;gap:12px;flex-wrap:wrap}
+.preg-n{width:50px;height:50px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#fff}
+.preg-t{font-size:clamp(24px, 2.5vw, 30px);color:var(--text);font-style:italic;line-height:1.4}
+ 
+/* YO HAGO */
+.yo-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1}
+.yo-panel{background:var(--cream);border:2px solid var(--border);border-top:5px solid var(--navy);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.yo-pt{font-size:19px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
+.frac-wrap{background:#fff;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;border:1px solid var(--border)}
+.frac-lbl{font-size:19px;color:var(--text3);text-align:center;font-style:italic;font-weight:500}
+.formula-box{background:var(--cream);border:2px solid var(--navy);border-top:5px solid var(--navy);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:13px;flex:1}
+.formula-row{display:flex;align-items:center;justify-content:center;padding:16px;background:#fff;border-radius:10px;border:1px solid var(--border)}
+.vocab{background:var(--navy);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-around;align-items:center;gap:12px;flex-wrap:wrap}
 .voc-item{display:flex;flex-direction:column;align-items:center;gap:5px}
-.voc-k{font-size:clamp(14px,1.5vw,17px);font-weight:700;text-transform:uppercase;letter-spacing:.09em}
-.voc-v{font-size:clamp(12px,1.3vw,15px);color:rgba(255,255,255,.7)}
-
-/* ── EJEMPLOS ── */
-.ej-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1}
-.ej-card{background:rgba(255,255,255,.07);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:11px;border-left:6px solid transparent;opacity:0;transform:translateX(20px);transition:opacity .5s,transform .5s}
+.voc-k{font-size:clamp(20px, 2.2vw, 26px);font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.voc-v{font-size:clamp(18px, 2vw, 24px);color:rgba(255,255,255,.82)}
+ 
+/* BARRA INTERACTIVA */
+.ibar-wrap{display:flex;gap:6px;padding:10px 0;align-items:center;justify-content:center}
+.ibar-seg{height:90px;flex:1;border-radius:8px;cursor:pointer;border:4px solid rgba(0,0,0,.12);background:#DEDBD3;transition:background .18s, transform .12s, box-shadow .18s;position:relative}
+.ibar-seg:hover{transform:scaleY(1.06);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.ibar-seg.lit{border-color:rgba(0,0,0,.18)}
+.ibar-seg .seg-lbl{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:24px;font-weight:800;color:rgba(255,255,255,.9);pointer-events:none;opacity:0;transition:opacity .2s}
+.ibar-seg.lit .seg-lbl{opacity:1}
+.ibar-counter{font-size:32px;font-weight:800;color:var(--navy);min-width:60px;text-align:center;flex-shrink:0}
+.ibar-hint{font-size:20px;color:var(--text3);font-style:italic;text-align:center;padding:4px 0}
+/* EJEMPLOS */
+.ej-card{background:#fff;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;border:2px solid var(--border);border-top:6px solid transparent;opacity:0;transform:translateX(16px);transition:opacity .5s,transform .5s;overflow:hidden;min-height:0}
 .ej-card.vis{opacity:1;transform:none}
-.ej-head{display:flex;align-items:center;gap:13px}
-.ej-n{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
-.ej-title{font-size:clamp(15px,1.65vw,19px);font-weight:700;color:#fff}
-.ej-ctx{font-size:clamp(13px,1.4vw,16px);color:#A8C4E8;font-style:italic;line-height:1.4}
-.ej-frac{background:var(--warm);border-radius:8px;padding:13px;text-align:center}
-
-/* ── FORMALIZACIÓN ── */
-.formal-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:18px;flex:1;align-items:stretch}
-.formal-l{display:flex;flex-direction:column;gap:14px}
-.model-box{background:#fff;border-radius:12px;padding:19px;display:flex;flex-direction:column;gap:13px;flex:1}
-.model-box-t{font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em}
-.conj{background:#FFF8F0;border:2px solid var(--amber);border-radius:10px;padding:15px 18px;font-size:clamp(14px,1.55vw,17px);color:var(--text);line-height:1.7;font-style:italic}
-.formal-r{display:flex;flex-direction:column;gap:13px}
-.rv{background:var(--blue);border-radius:14px;padding:19px;display:flex;flex-direction:column;gap:13px;opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.22,.68,0,1.2),transform .55s cubic-bezier(.22,.68,0,1.2)}
-.rv.light{background:var(--warm);border:1px solid var(--border)}
+.ej-head{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.ej-n{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;color:#fff;flex-shrink:0}
+.ej-title{font-size:clamp(26px, 2.8vw, 34px);font-weight:700;color:var(--text)}
+.ej-ctx{font-size:clamp(24px, 2.6vw, 32px);color:var(--text2);font-style:italic;line-height:1.4;flex-shrink:0}
+.ej-frac{background:var(--cream);border-radius:10px;padding:10px 12px;text-align:center;border:1px solid var(--border);flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:0;overflow:hidden}
+ 
+/* FORMALIZACIÓN */
+.formal-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:13px;flex:1;align-items:stretch}
+.formal-l{display:flex;flex-direction:column;gap:10px}
+.model-box{background:var(--cream);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;flex:1;border:2px solid var(--border)}
+.model-box-t{font-size:17px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
+.conj{background:#FFF7ED;border:2.5px solid var(--amber);border-radius:10px;padding:12px 15px;font-size:clamp(20px, 2.2vw, 24px);color:var(--text);line-height:1.45;font-style:italic}
+.formal-r{display:flex;flex-direction:column;gap:10px}
+.rv{background:var(--cream);border:2px solid var(--border);border-left:6px solid var(--navy);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px;opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.22,.68,0,1.2),transform .5s cubic-bezier(.22,.68,0,1.2)}
 .rv.vis{opacity:1;transform:none}
-.rv-t{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#A8C4E8}
-.rv.light .rv-t{color:var(--blue)}
-.fml{background:rgba(255,255,255,.1);border-radius:10px;padding:15px;text-align:center}
-.fml.light{background:var(--warm)}
+.rv-t{font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
+.fml{background:#fff;border-radius:10px;padding:18px;text-align:center;border:2px solid var(--border)}
+.rv-body{font-size:clamp(23px, 2.5vw, 29px);color:var(--text);line-height:1.6}
 .parts-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pt{border-radius:10px;padding:13px;display:flex;flex-direction:column;gap:5px}
-.pt-n{font-size:clamp(13px,1.4vw,16px);font-weight:700;text-transform:uppercase;letter-spacing:.09em}
-.pt-d{font-size:clamp(12px,1.3vw,15px);line-height:1.4}
-.click-hint{font-size:13px;color:var(--text3);text-align:center;font-style:italic;padding:4px}
-
-/* ── HACEMOS / TÚ HACES ── */
-.hac-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;flex:1}
-.hac-card{background:#fff;border-radius:12px;border:1px solid var(--border);padding:17px;display:flex;flex-direction:column;gap:10px;border-left:6px solid transparent;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s}
+.pt{border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:5px}
+.pt-n{font-size:clamp(22px, 2.4vw, 28px);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.pt-d{font-size:clamp(20px, 2.2vw, 26px);line-height:1.4}
+.click-hint{font-size:20px;color:var(--text3);text-align:center;font-style:italic;padding:3px}
+ 
+/* HACEMOS / TÚ HACES */
+.hac-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.hac-card{background:#fff;border-radius:12px;border:2px solid var(--border);border-top:5px solid transparent;padding:16px;display:flex;flex-direction:column;gap:9px;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s}
 .hac-card.vis{opacity:1;transform:none}
-.hac-head{display:flex;align-items:center;gap:11px}
-.hac-n{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff}
-.hac-title{font-size:clamp(15px,1.65vw,19px);font-weight:700;color:var(--text)}
-.hac-ctx{font-size:clamp(14px,1.5vw,17px);color:var(--text2);font-style:italic;line-height:1.4}
-.hac-bar{background:var(--warm);border-radius:8px;padding:11px}
-.hac-task{background:var(--warm);border-radius:8px;padding:10px 14px;font-size:clamp(13px,1.4vw,16px);color:var(--blue);font-style:italic}
-
-/* ── TRANSICIÓN ── */
-.s-trans{background:var(--blue);align-items:center;justify-content:center}
-.trans-big{font-family:'DM Serif Display',serif;font-size:clamp(60px,10vw,110px);color:#fff;line-height:1;animation:fadeUp .6s both}
-.trans-sub{font-size:clamp(19px,2.1vw,24px);color:#A8C4E8;animation:fadeUp .6s .2s both}
-.trans-note{font-size:clamp(15px,1.6vw,18px);color:rgba(168,196,232,.6);font-style:italic;animation:fadeUp .6s .4s both}
-
-/* ── INTERACTIVA ── */
-.inter-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;align-items:start}
-.inter-l{display:flex;flex-direction:column;gap:14px}
-.inter-r{display:flex;flex-direction:column;gap:14px}
-.question-box{background:#fff;border-radius:14px;border:2px solid var(--blue-mid);padding:20px 24px}
-.q-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:10px}
-.vote-area{display:flex;flex-direction:column;gap:11px}
-.vote-btn{background:#fff;border:2px solid var(--border);border-radius:11px;padding:14px 20px;font-size:clamp(15px,1.65vw,19px);font-family:inherit;color:var(--text);cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:center;gap:14px}
-.vote-btn:hover{border-color:var(--blue-mid);background:#EBF4FB}
-.vote-btn.selected{border-color:var(--blue);background:var(--blue);color:#fff}
-.vote-indicator{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;transition:all .2s}
+.hac-head{display:flex;align-items:center;gap:12px}
+.hac-n{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px;color:#fff;flex-shrink:0}
+.hac-title{font-size:clamp(23px, 2.4vw, 29px);font-weight:700;color:var(--text)}
+.hac-ctx{font-size:clamp(23px, 2.4vw, 29px);color:var(--text2);font-style:italic;line-height:1.4}
+.hac-bar{background:var(--cream);border-radius:8px;padding:10px;border:1px solid var(--border)}
+.hac-task{background:var(--cream);border-radius:8px;padding:10px 14px;font-size:clamp(21px, 2.2vw, 27px);color:var(--navy);font-style:italic;font-weight:600;border-left:4px solid var(--blue-mid)}
+.hac-answer{font-size:clamp(22px, 2.3vw, 28px)!important;border-radius:8px;padding:11px 14px}
+ 
+/* TRANSICIÓN */
+.s-trans{background:var(--navy);align-items:center;justify-content:center}
+.trans-big{font-family:'DM Serif Display',serif;font-size:clamp(70px, 12vw, 130px);color:#fff;line-height:1;animation:fadeUp .6s both}
+.trans-sub{font-size:clamp(28px, 3vw, 36px);color:#C8DDEF;animation:fadeUp .6s .2s both}
+.trans-note{font-size:clamp(22px, 2.4vw, 28px);color:rgba(200,221,239,.65);font-style:italic;animation:fadeUp .6s .4s both}
+ 
+/* VOTACIÓN */
+.inter-layout{display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1;align-items:start}
+.inter-l,.inter-r{display:flex;flex-direction:column;gap:11px}
+.question-box{background:#fff;border-radius:14px;border:2px solid var(--blue-mid);border-top:5px solid var(--blue-mid);padding:17px 20px}
+.q-label{font-size:18px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:10px}
+.vote-area{display:flex;flex-direction:column;gap:9px}
+.vote-btn{background:#fff;border:2px solid var(--border);border-radius:11px;padding:16px 20px;font-size:clamp(24px, 2.5vw, 30px);font-family:inherit;color:var(--text);cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:center;gap:14px}
+.vote-btn:hover{border-color:var(--blue-mid);background:#EEF5FB}
+.vote-btn.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+.vote-indicator{width:28px;height:28px;border-radius:50%;border:2.5px solid var(--border);flex-shrink:0;transition:all .2s}
 .vote-btn.selected .vote-indicator{background:#fff;border-color:#fff}
-.results-panel{background:#fff;border-radius:14px;border:1px solid var(--border);padding:20px;display:flex;flex-direction:column;gap:12px}
-.res-title{font-size:14px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.09em}
-.bar-row{display:flex;align-items:center;gap:11px;margin-bottom:4px}
-.bar-lbl{font-size:clamp(13px,1.4vw,16px);color:var(--text);min-width:150px;line-height:1.3}
-.bar-track{flex:1;height:32px;background:var(--warm);border-radius:7px;overflow:hidden}
+.results-panel{background:#fff;border-radius:14px;border:2px solid var(--border);padding:17px;display:flex;flex-direction:column;gap:10px}
+.res-title{font-size:19px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.09em}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:3px}
+.bar-lbl{font-size:clamp(21px, 2.2vw, 27px);color:var(--text);min-width:168px;line-height:1.3}
+.bar-track{flex:1;height:42px;background:var(--warm);border-radius:7px;overflow:hidden;border:1px solid var(--border)}
 .bar-fill{height:100%;border-radius:7px;transition:width .6s cubic-bezier(.22,.68,0,1.2);display:flex;align-items:center;padding-left:12px;min-width:0}
-.bar-val{font-size:14px;font-weight:700;color:#fff;white-space:nowrap}
-.vote-total{font-size:clamp(13px,1.4vw,15px);color:var(--text3);text-align:center}
-.sim-btn{background:var(--blue);color:#fff;border:none;border-radius:10px;padding:13px;font-size:clamp(14px,1.5vw,17px);font-family:inherit;cursor:pointer;font-weight:600;transition:background .2s}
+.bar-val{font-size:19px;font-weight:700;color:#fff;white-space:nowrap}
+.vote-total{font-size:clamp(20px, 2.1vw, 25px);color:var(--text3);text-align:center;font-weight:500}
+.sim-btn{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:14px;font-size:clamp(21px, 2.2vw, 26px);font-family:inherit;cursor:pointer;font-weight:600;transition:background .2s}
 .sim-btn:hover{background:var(--blue-mid)}
-.answer-box{background:#EBF4FB;border:2px solid var(--blue-mid);border-radius:12px;padding:16px 20px}
-.answer-lbl{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.answer-txt{font-size:clamp(15px,1.65vw,19px);color:var(--text);line-height:1.6}
-
-/* ── VOTACIÓN FIREBASE ── */
+.answer-box{background:#EEF5FB;border:2px solid var(--blue-mid);border-radius:12px;padding:15px 18px}
+.answer-lbl{font-size:17px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.answer-txt{font-size:clamp(23px, 2.4vw, 30px);color:var(--text);line-height:1.55}
 .vote-url-bar{background:var(--navy);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:14px}
-.vote-url-lbl{font-size:13px;color:#A8C4E8;font-weight:700;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-.vote-url-val{font-family:monospace;font-size:clamp(15px,1.7vw,19px);color:#fff;background:rgba(255,255,255,.1);padding:6px 14px;border-radius:6px;letter-spacing:.03em}
-.vote-status{font-size:12px;color:#A8C4E8;margin-left:auto;white-space:nowrap}
-/* ── GEOGEBRA ── */
-.ggb-layout{display:flex;flex-direction:column;gap:12px;flex:1;overflow:hidden}
+.vote-url-lbl{font-size:18px;color:#C8DDEF;font-weight:700;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.vote-url-val{font-family:monospace;font-size:clamp(22px, 2.3vw, 28px);color:#fff;background:rgba(255,255,255,.12);padding:7px 14px;border-radius:6px;letter-spacing:.03em}
+.vote-status{font-size:17px;color:#C8DDEF;margin-left:auto;white-space:nowrap;font-weight:600}
+ 
+/* GEOGEBRA */
+.ggb-layout{display:flex;flex-direction:column;gap:10px;flex:1;overflow:hidden}
 .ggb-wrap{flex:1;border-radius:12px;overflow:hidden;border:2px solid var(--border);background:#fff;min-height:0}
 .ggb-wrap iframe{width:100%;height:100%;border:none;display:block}
-.ggb-nota{background:#E0F2F1;border:2px solid var(--teal);border-radius:10px;padding:13px 18px;font-size:clamp(15px,1.65vw,18px);color:var(--text);line-height:1.5;flex-shrink:0}
-
-/* ── RÚBRICA ── */
-.rub-table{width:100%;border-collapse:collapse;font-size:clamp(14px,1.6vw,18px)}
-.rub-table th{background:var(--navy);color:#fff;padding:13px 15px;text-align:left;font-size:clamp(14px,1.5vw,17px);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.rub-table td{padding:12px 15px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;color:var(--text);font-size:clamp(14px,1.55vw,17px)}
-.rub-table tr:nth-child(even) td{background:var(--warm)}
+.ggb-nota{background:#E8F5F0;border:2.5px solid var(--teal);border-radius:10px;padding:13px 18px;font-size:clamp(23px, 2.5vw, 29px);color:var(--text);line-height:1.5;flex-shrink:0}
+ 
+/* RÚBRICA */
+.rub-table{width:100%;border-collapse:collapse}
+.rub-table th{background:var(--navy);color:#fff;padding:15px 15px;text-align:left;font-size:clamp(20px, 2.1vw, 25px);font-weight:700}
+.rub-table td{padding:14px 15px;border-bottom:1.5px solid var(--border);vertical-align:top;line-height:1.4;color:var(--text);font-size:clamp(20px, 2.1vw, 25px)}
+.rub-table tr:nth-child(even) td{background:var(--cream)}
 .rub-table tr:nth-child(odd) td{background:#fff}
-.rub-table td:first-child{font-weight:700;color:var(--blue);background:#EBF4FB!important;border-right:2px solid var(--blue-mid);font-size:clamp(15px,1.6vw,18px)}
+.rub-table td:first-child{font-weight:700;color:var(--navy);background:#EEF5FB!important;border-right:3px solid var(--blue-mid)}
 .rub-table tbody tr{opacity:0;transform:translateX(-10px);transition:opacity .4s,transform .4s}
 .rub-table tbody tr.vis{opacity:1;transform:none}
 .rub-table thead tr{opacity:1;transform:none}
-.nbadge{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:6px}
-
-/* ── METACOGNICIÓN ── */
-.meta-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;flex:1}
-.meta-l{display:flex;flex-direction:column;gap:16px}
-.meta-qbox{background:#E0F2F1;border:2.5px solid var(--teal);border-radius:14px;padding:22px 26px;display:flex;flex-direction:column;gap:10px}
-.meta-qlbl{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
-.meta-qtxt{font-family:'DM Serif Display',serif;font-size:clamp(17px,2vw,23px);color:var(--text);font-style:italic;line-height:1.55}
-.cuad-t{font-size:clamp(15px,1.65vw,19px);font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em}
-.cuad-items{display:flex;flex-direction:column;gap:12px}
-.cuad-item{display:flex;align-items:flex-start;gap:14px;background:#fff;border-radius:10px;padding:14px 18px;border-left:4px solid var(--teal);font-size:clamp(17px,1.9vw,22px);color:var(--text);line-height:1.45}
-.cuad-n{font-weight:700;color:var(--teal);flex-shrink:0;min-width:26px;font-size:clamp(17px,1.9vw,22px)}
-.meta-r{display:flex;flex-direction:column;gap:18px}
-.sema-t{font-size:clamp(15px,1.65vw,19px);font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em}
-.sema-items{display:flex;flex-direction:column;gap:14px}
-.sema-item{display:flex;align-items:center;gap:18px;background:#fff;border-radius:12px;padding:17px 22px;box-shadow:0 2px 8px rgba(0,0,0,.07);opacity:0;transform:translateX(16px);transition:opacity .5s,transform .5s}
+.nbadge{width:13px;height:13px;border-radius:50%;display:inline-block;margin-right:7px}
+ 
+/* METACOGNICIÓN */
+.meta-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:15px;flex:1}
+.meta-l{display:flex;flex-direction:column;gap:13px}
+.meta-qbox{background:#E8F5F0;border:3px solid var(--teal);border-radius:14px;padding:19px 22px;display:flex;flex-direction:column;gap:8px}
+.meta-qlbl{font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.meta-qtxt{font-family:'DM Serif Display',serif;font-size:clamp(23px, 2.5vw, 31px);color:var(--text);font-style:italic;line-height:1.5}
+.cuad-t{font-size:clamp(21px, 2.2vw, 27px);font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
+.cuad-items{display:flex;flex-direction:column;gap:9px}
+.cuad-item{display:flex;align-items:flex-start;gap:13px;background:#fff;border-radius:10px;padding:12px 15px;border-left:5px solid var(--teal);font-size:clamp(23px, 2.4vw, 29px);color:var(--text);line-height:1.4}
+.cuad-n{font-weight:700;color:var(--teal);flex-shrink:0;min-width:28px;font-size:clamp(23px, 2.4vw, 29px)}
+.meta-r{display:flex;flex-direction:column;gap:13px}
+.sema-t{font-size:clamp(21px, 2.2vw, 27px);font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
+.sema-items{display:flex;flex-direction:column;gap:11px}
+.sema-item{display:flex;align-items:center;gap:16px;background:#fff;border-radius:12px;padding:14px 19px;border:2px solid var(--border);opacity:0;transform:translateX(16px);transition:opacity .5s,transform .5s}
 .sema-item.vis{opacity:1;transform:none}
-.sema-c{width:48px;height:48px;border-radius:50%;flex-shrink:0}
-.sema-txt{font-size:clamp(17px,1.9vw,22px);color:var(--text);line-height:1.35}
-.sema-txt strong{display:block;font-size:clamp(14px,1.5vw,17px);color:var(--text3);margin-top:3px}
-
+.sema-c{width:60px;height:60px;border-radius:50%;flex-shrink:0;border:3px solid rgba(0,0,0,.1)}
+.sema-txt{font-size:clamp(23px, 2.4vw, 29px);color:var(--text);line-height:1.3}
+.sema-txt strong{display:block;font-size:clamp(20px, 2.1vw, 24px);color:var(--text3);margin-top:3px}
+ 
+/* FULLSCREEN */
+#fs-btn{position:fixed;top:12px;right:70px;z-index:200;background:rgba(15,32,64,.7);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-size:17px;width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#fs-btn:hover{background:var(--blue-mid)}
+ 
 /* NAV */
 #nav{position:fixed;bottom:20px;right:28px;display:flex;align-items:center;gap:12px;z-index:100}
-.nbtn{width:44px;height:44px;border-radius:50%;background:rgba(15,32,64,.85);border:1px solid rgba(255,255,255,.15);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.nbtn:hover{background:var(--blue)}
-#ncnt{font-size:13px;color:rgba(255,255,255,.8);background:rgba(15,32,64,.7);padding:5px 13px;border-radius:20px;font-family:monospace}
-#pbar{position:fixed;bottom:0;left:0;height:4px;background:var(--blue-mid);transition:width .35s ease;z-index:100}
-#hint{position:fixed;bottom:20px;left:28px;font-size:12px;color:rgba(255,255,255,.45);background:rgba(15,32,64,.6);padding:5px 13px;border-radius:20px;font-family:monospace;transition:opacity .3s}
+.nbtn{width:52px;height:52px;border-radius:50%;background:rgba(15,32,64,.88);border:1.5px solid rgba(255,255,255,.18);color:#fff;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.nbtn:hover{background:var(--blue-mid)}
+#ncnt{font-size:19px;color:rgba(255,255,255,.88);background:rgba(15,32,64,.75);padding:7px 20px;border-radius:20px;font-family:monospace;font-weight:600}
+#pbar{position:fixed;bottom:0;left:0;height:5px;background:var(--blue-mid);transition:width .35s ease;z-index:100}
+#hint{position:fixed;bottom:20px;left:28px;font-size:16px;color:rgba(255,255,255,.5);background:rgba(15,32,64,.65);padding:7px 16px;border-radius:20px;font-family:monospace;transition:opacity .3s}
+
+/* ═══════════════════════════════════════════════════════════════
+   OPTIMIZACIÓN PROYECTOR
+   ═══════════════════════════════════════════════════════════════ */
+@media projection, screen {
+  :root { --font-scale: 1.9; }
+  .slide-title { font-size: clamp(54px, 7vw, 80px) !important; font-weight: 800 !important; }
+  .slide-instr { font-size: clamp(32px, 3.8vw, 42px) !important; font-weight: 600 !important; }
+  .hdr-b { font-size: 22px !important; font-weight: 800 !important; }
+  .hdr-t { font-size: 19px !important; font-weight: 900 !important; padding: 10px 26px !important; }
+  .mbadge { font-size: 22px !important; padding: 10px 24px !important; }
+  .body, p, li, td, th, div { font-size: calc(var(--font-scale) * 16px) !important; line-height: 1.6 !important; }
+  .det-text, .ej-ctx, .hac-ctx, .slide-instr { color: var(--navy) !important; font-weight: 600 !important; }
+  .yo-panel, .ej-card, .hac-card, .formula-box, .det-box { border-width: 4px !important; }
+  .katex, .katex-display, .mjx-chtml { font-size: 2em !important; }
+  .formula-row .katex, .hac-answer .katex { font-size: 3.6em !important; }
+  .ej-frac .katex { font-size: 5.5em !important; }
+  .fml .katex { font-size: 4.8em !important; }
+  .ibar-seg { height: 110px !important; border-width: 5px !important; }
+  .seg-lbl { font-size: 28px !important; font-weight: 900 !important; }
+  .ibar-counter { font-size: 38px !important; font-weight: 900 !important; }
+  .vote-btn { font-size: clamp(32px, 3.6vw, 38px) !important; padding: 20px 24px !important; }
+  .rub-table th, .rub-table td { font-size: clamp(24px, 2.8vw, 32px) !important; padding: 18px 20px !important; }
+  .ggb-wrap { min-height: 450px !important; }
+  #ncnt { font-size: 22px !important; padding: 9px 24px !important; }
+  .nbtn { width: 60px !important; height: 60px !important; font-size: 28px !important; }
+  
+  /* CORRECCIÓN SLIDE 1 - TÍTULO MÁS GRANDE */
+  .p-title { font-size: clamp(100px, 16vw, 200px) !important; }
+  .p-sub { font-size: clamp(32px, 3.5vw, 44px) !important; }
+  .p-badge { font-size: 26px !important; }
+  .psess-t { font-size: 28px !important; }
+  .psess-s { font-size: 22px !important; }
+  
+  /* CORRECCIÓN SLIDE 2 */
+  .sess-num { font-size: clamp(140px, 18vw, 280px) !important; }
+  .sess-label { font-size: clamp(36px, 4.5vw, 64px) !important; letter-spacing: 0.2em !important; }
+  .sess-right { padding: 30px 60px !important; }
+  .obj-item-full { font-size: clamp(26px, 3vw, 34px) !important; }
+}
+
+:fullscreen, ::-webkit-full-screen, :-moz-full-screen, :-ms-fullscreen { width: 100vw !important; height: 100vh !important; }
+@media screen and (max-aspect-ratio: 4/3) { :root { --font-scale: 2.1; } .slide { padding: 28px 42px !important; } }
+@media screen and (min-aspect-ratio: 16/10) { :root { --font-scale: 1.8; } }
+.body { overflow-y: auto !important; padding: 28px 48px 22px !important; }
+.text-low-contrast { color: var(--navy) !important; }
+h1, h2, h3, .slide-title, .ej-title, .hac-title { font-weight: 800 !important; }
+p, li, span, div, td { font-weight: 400 !important; }
+.title-row { margin-bottom: 20px !important; }
+.obj-item, .cuad-item, .sema-item { margin-bottom: 14px !important; padding: 18px 22px !important; }
 </style>
 </head>
 <body>
 <div id="deck"></div>
+<button id="fs-btn" title="Pantalla completa (F)">⛶</button>
 <div id="nav">
   <button class="nbtn" id="bp">&#8592;</button>
-  <span id="ncnt">1 / 13</span>
+  <span id="ncnt">1 / 15</span>
   <button class="nbtn" id="bn">&#8594;</button>
 </div>
 <div id="pbar"></div>
-<div id="hint">Espacio / → avanzar &nbsp;|&nbsp; ← retroceder</div>
-
+<div id="hint">Espacio / → avanzar  ·  ← retroceder  ·  F pantalla completa</div>
+ 
 <script>
-/* ── SVG HELPERS ── */
 function fracBar(sh,tot,col,w,h){
   const cw=(w-(tot+1)*3)/tot;let s='';
-  for(let i=0;i<tot;i++){const x=3+i*(cw+3);s+=`<rect x="${x.toFixed(1)}" y="3" width="${cw.toFixed(1)}" height="${h-6}" rx="4" fill="${i<sh?col:'#DEDBD3'}" stroke="#fff" stroke-width="1.5"/>`;}
+  for(let i=0;i<tot;i++){const x=3+i*(cw+3);s+=`<rect x="${x.toFixed(1)}" y="3" width="${cw.toFixed(1)}" height="${h-6}" rx="4" fill="${i<sh?col:'#DEDBD3'}" stroke="#fff" stroke-width="2"/>`;}
   return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
 }
 function fracCircle(sh,tot,col,sz){
   const cx=sz/2,cy=sz/2,r=sz/2-4,a=2*Math.PI/tot;let p='';
-  for(let i=0;i<tot;i++){const a1=-Math.PI/2+i*a,a2=a1+a,x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1),x2=cx+r*Math.cos(a2),y2=cy+r*Math.sin(a2);p+=`<path d="M ${cx} ${cy} L ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 ${a>Math.PI?1:0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} Z" fill="${i<sh?col:'#DEDBD3'}" stroke="#fff" stroke-width="1.5"/>`;}
+  for(let i=0;i<tot;i++){const a1=-Math.PI/2+i*a,a2=a1+a,x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1),x2=cx+r*Math.cos(a2),y2=cy+r*Math.sin(a2);p+=`<path d="M ${cx} ${cy} L ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 ${a>Math.PI?1:0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} Z" fill="${i<sh?col:'#DEDBD3'}" stroke="#fff" stroke-width="2"/>`;}
   return `<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" xmlns="http://www.w3.org/2000/svg">${p}</svg>`;
 }
-
-/* ── VOTACIÓN FIREBASE REALTIME ── */
-// Base de datos pública de demostración — cada clase puede usar su propio proyecto
-const FB_URL = 'https://fracciones-merceditas-default-rtdb.firebaseio.com';
-const SESSION_KEY = 'sesion1_' + new Date().toISOString().slice(0,10); // clave del día
-let fbConnected = false;
-
-// Estado local (fallback si no hay red)
-const localVotes = {a:0,b:0,c:0};
-let localVoted = false;
-
-function getVotePath(){ return `${FB_URL}/votes/${SESSION_KEY}.json`; }
-
-async function fbGet(){
-  try{
-    const r = await fetch(getVotePath());
-    return r.ok ? await r.json() : null;
-  }catch(e){ return null; }
-}
-async function fbPatch(data){
-  try{
-    const r = await fetch(getVotePath(), {
-      method:'PATCH',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)
-    });
-    return r.ok;
-  }catch(e){ return false; }
-}
-
-// Incremento atómico con transacción optimista
-async function castVote(opt){
-  const cur = await fbGet() || {a:0,b:0,c:0};
-  cur[opt] = (cur[opt]||0) + 1;
-  await fbPatch(cur);
-}
-
-// Polling cada 2.5 s para mostrar resultados en vivo
-let pollInterval = null;
-function startPolling(){
-  if(pollInterval) return;
-  pollInterval = setInterval(async ()=>{
-    const data = await fbGet();
-    if(data) renderBars(data);
-    updateStatus(data);
-  }, 2500);
-}
-function stopPolling(){
-  if(pollInterval){ clearInterval(pollInterval); pollInterval=null; }
-}
-
+ 
+/* FULLSCREEN */
+document.getElementById('fs-btn').addEventListener('click',()=>{
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen().catch(()=>{});}
+});
+document.addEventListener('fullscreenchange',()=>{
+  document.getElementById('fs-btn').textContent=document.fullscreenElement?'':'';
+});
+ 
+/* FIREBASE */
+const FB_URL='https://fracciones-merceditas-default-rtdb.firebaseio.com';
+const SESSION_KEY='sesion1_'+new Date().toISOString().slice(0,10);
+const localVotes={a:0,b:0,c:0};
+function getVotePath(){return `${FB_URL}/votes/${SESSION_KEY}.json`;}
+async function fbGet(){try{const r=await fetch(getVotePath());return r.ok?await r.json():null;}catch(e){return null;}}
+async function fbPatch(data){try{const r=await fetch(getVotePath(),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});return r.ok;}catch(e){return false;}}
+let pollInterval=null;
+function startPolling(){if(pollInterval)return;pollInterval=setInterval(async()=>{const d=await fbGet();if(d)renderBars(d);updateStatus(d);},2500);}
+function stopPolling(){if(pollInterval){clearInterval(pollInterval);pollInterval=null;}}
 function renderBars(data){
-  const d = data || {a:0,b:0,c:0};
-  const total = (d.a||0)+(d.b||0)+(d.c||0)||1;
-  ['a','b','c'].forEach(k=>{
-    const pct = Math.round((d[k]||0)/total*100);
-    const f = document.getElementById('bf'+k);
-    if(f){ f.style.width=pct+'%'; const v=f.querySelector('.bar-val'); if(v) v.textContent=pct+'%'; }
-  });
-  const tot = (d.a||0)+(d.b||0)+(d.c||0);
-  const el = document.getElementById('vote-total');
-  if(el) el.textContent = tot+' respuesta'+(tot!==1?'s':'');
+  const d=data||{a:0,b:0,c:0};const total=(d.a||0)+(d.b||0)+(d.c||0)||1;
+  ['a','b','c'].forEach(k=>{const pct=Math.round((d[k]||0)/total*100);const f=document.getElementById('bf'+k);if(f){f.style.width=pct+'%';const v=f.querySelector('.bar-val');if(v)v.textContent=pct+'%';}});
+  const tot=(d.a||0)+(d.b||0)+(d.c||0);const el=document.getElementById('vote-total');if(el)el.textContent=tot+' respuesta'+(tot!==1?'s':'');
 }
-function updateStatus(data){
-  const tot = data ? (data.a||0)+(data.b||0)+(data.c||0) : 0;
-  const st = document.getElementById('vote-status');
-  if(st) st.textContent = '🟢 EN VIVO · '+tot+' votos';
-}
-
+function updateStatus(data){const tot=data?(data.a||0)+(data.b||0)+(data.c||0):0;const st=document.getElementById('vote-status');if(st)st.textContent=' EN VIVO · '+tot+' votos';}
 async function voteFor(opt){
-  const alreadyEl = document.getElementById('already-voted');
-  if(localStorage.getItem('voted_'+SESSION_KEY)){
-    if(alreadyEl) alreadyEl.style.display='block';
-    return;
-  }
-  // Marcar como votado
+  const alreadyEl=document.getElementById('already-voted');
+  if(localStorage.getItem('voted_'+SESSION_KEY)){if(alreadyEl)alreadyEl.style.display='block';return;}
   localStorage.setItem('voted_'+SESSION_KEY,'1');
   document.querySelectorAll('.vote-btn').forEach(b=>b.classList.remove('selected'));
-  const btn = document.getElementById('vb'+opt);
-  if(btn) btn.classList.add('selected');
-  // Enviar a Firebase
-  const ok = await fbPatch(await (async()=>{ const c=await fbGet()||{a:0,b:0,c:0}; c[opt]=(c[opt]||0)+1; return c; })());
-  if(!ok){
-    // Fallback local
-    localVotes[opt]++;
-    renderBars(localVotes);
-  } else {
-    const fresh = await fbGet();
-    if(fresh) renderBars(fresh);
-  }
+  const btn=document.getElementById('vb'+opt);if(btn)btn.classList.add('selected');
+  const ok=await fbPatch(await(async()=>{const c=await fbGet()||{a:0,b:0,c:0};c[opt]=(c[opt]||0)+1;return c;})());
+  if(!ok){localVotes[opt]++;renderBars(localVotes);}else{const fresh=await fbGet();if(fresh)renderBars(fresh);}
 }
-
-function simVotes(){
-  ['a','a','a','b','c','a','b','a','c','b','a','c','a','b'].forEach((v,i)=>{
-    setTimeout(async()=>{
-      const cur = await fbGet()||{a:0,b:0,c:0};
-      cur[v]=(cur[v]||0)+1;
-      await fbPatch(cur);
-      const fresh=await fbGet();
-      if(fresh) renderBars(fresh);
-      updateStatus(fresh);
-    }, i*300);
+function simVotes(){['a','a','a','b','c','a','b','a','c','b','a','c','a','b'].forEach((v,i)=>{setTimeout(async()=>{const cur=await fbGet()||{a:0,b:0,c:0};cur[v]=(cur[v]||0)+1;await fbPatch(cur);const fresh=await fbGet();if(fresh)renderBars(fresh);updateStatus(fresh);},i*300);});}
+function resetVotes(){localStorage.removeItem('voted_'+SESSION_KEY);fbPatch({a:0,b:0,c:0});renderBars({a:0,b:0,c:0});document.querySelectorAll('.vote-btn').forEach(b=>b.classList.remove('selected'));const el=document.getElementById('vote-total');if(el)el.textContent='0 respuestas';const aa=document.getElementById('already-voted');if(aa)aa.style.display='none';}
+ 
+/* ══ BARRAS INTERACTIVAS ══ */
+function initInterBar(containerId, total, color, fracId){
+  const wrap = document.getElementById(containerId);
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  const counter = document.createElement('div');
+  counter.className = 'ibar-counter';
+  counter.textContent = '0 / ' + total;
+  const segsWrap = document.createElement('div');
+  segsWrap.style.cssText = 'display:flex;gap:6px;flex:1;align-items:stretch';
+  let selected = 0;
+  const segs = [];
+  for(let i = 0; i < total; i++){
+    const seg = document.createElement('div');
+    seg.className = 'ibar-seg';
+    seg.style.height = '90px';
+    const lbl = document.createElement('div');
+    lbl.className = 'seg-lbl';
+    lbl.textContent = i + 1;
+    seg.appendChild(lbl);
+    segs.push(seg);
+    segsWrap.appendChild(seg);
+    seg.addEventListener('click', ()=>{
+      if(wrap.dataset.locked) return;
+      const newSel = (selected === i + 1) ? i : i + 1;
+      selected = newSel;
+      segs.forEach((s, idx) => {
+        if(idx < selected){
+          s.style.background = color;
+          s.classList.add('lit');
+        } else {
+          s.style.background = '#DEDBD3';
+          s.classList.remove('lit');
+        }
+      });
+      counter.textContent = selected + ' / ' + total;
+    });
+  }
+  wrap.style.cssText = 'display:flex;align-items:center;gap:16px;padding:8px 0';
+  wrap.appendChild(segsWrap);
+  wrap.appendChild(counter);
+}
+ 
+function revealInterFrac(barId, fracId, defaultNumerator, denominator){
+  const wrap = document.getElementById(barId);
+  const fracEl = document.getElementById(fracId);
+  if(!wrap || !fracEl) return;
+  const segs = wrap.querySelectorAll('.ibar-seg');
+  const selected = Array.from(segs).filter(s => s.classList.contains('lit')).length;
+  const numerator = selected > 0 ? selected : defaultNumerator;
+  wrap.dataset.locked = '1';
+  fracEl.innerHTML = '\\(\\dfrac{' + numerator + '}{' + denominator + '}\\)';
+  fracEl.style.opacity = '1';
+  if(window.renderMathInElement) renderMathInElement(fracEl, {
+    delimiters:[{left:'\\(',right:'\\)',display:false},{left:'$$',right:'$$',display:true}], throwOnError:false
   });
 }
-function resetVotes(){
-  localStorage.removeItem('voted_'+SESSION_KEY);
-  fbPatch({a:0,b:0,c:0});
-  renderBars({a:0,b:0,c:0});
-  document.querySelectorAll('.vote-btn').forEach(b=>b.classList.remove('selected'));
-  const el=document.getElementById('vote-total'); if(el) el.textContent='0 respuestas';
-  const aa=document.getElementById('already-voted'); if(aa) aa.style.display='none';
-}
-
-/* ── SLIDES ── */
+ 
+/* ═ SLIDES ═ */
 const SLIDES=[
-
-/* 0 PORTADA */
+ 
+/* SLIDE 1: PORTADA */
 {cls:'s-portada',noH:true,noF:true,clicks:0,html:`
 <div class="p-inner">
   <div class="p-badge">I.E. Merceditas Gómez Martínez · Matemáticas · Grado 7°</div>
@@ -386,245 +484,356 @@ const SLIDES=[
     <div class="psess"><div class="psess-n">3</div><div class="psess-t">Fracciones equivalentes</div><div class="psess-s">Comparación y simplificación</div></div>
   </div>
 </div>`},
-
-/* 1 PORTADA SESIÓN */
-{cls:'s-sesion',noH:true,clicks:0,fL:'Introducción a Fracciones · Sesión 1',html:`
-<div class="pan"><div class="pan-n">1</div><div class="pan-l">Sesión</div></div>
-<div class="sess-content">
-  <div class="sess-title">¿Qué es una fracción?</div>
-  <div class="divider"></div>
-  <div style="font-size:clamp(14px,1.6vw,18px);color:var(--text3);font-style:italic">Exploración → Construcción → Formalización → Aplicación → Metacognición</div>
-  <div class="obj-list">
-    <div class="obj-item"><div class="obj-dot">1</div>Identificar el numerador y denominador de una fracción.</div>
-    <div class="obj-item"><div class="obj-dot">2</div>Representar fracciones con modelos de barra y círculo.</div>
-    <div class="obj-item"><div class="obj-dot">3</div>Interpretar una fracción como parte de una unidad dividida en partes iguales.</div>
+ 
+/* SLIDE 2: SESIÓN 1 - DISEÑO PANEL AZUL */
+{noH:true,noF:true,clicks:0,fL:'Introducción a Fracciones · Sesión 1',html:`
+<div class="sess-split">
+  <!-- PANEL IZQUIERDO -->
+  <div class="sess-left">
+    <div class="sess-num">1</div>
+    <div class="sess-label">Sesión</div>
   </div>
-  <div class="tiempo">⏱ 55 minutos &nbsp;·&nbsp; Yo hago → Hacemos → Tú haces &nbsp;·&nbsp; DUA activo</div>
+  
+  <!-- PANEL DERECHO -->
+  <div class="sess-right">
+    <div class="slide-title" style="font-size:clamp(48px, 5.5vw, 68px)">¿Qué es una fracción?</div>
+    
+    <div style="font-size:clamp(22px,2.4vw,28px);color:var(--text3);font-style:italic">
+      Exploración → Construcción → Formalización → Aplicación → Metacognición
+    </div>
+    
+    <div class="obj-list-full">
+      <div class="obj-item-full"><div class="obj-dot-full">1</div>Identificar numerador y denominador de una fracción.</div>
+      <div class="obj-item-full"><div class="obj-dot-full">2</div>Representar fracciones con modelos de barra y círculo.</div>
+      <div class="obj-item-full"><div class="obj-dot-full">3</div>Interpretar una fracción como parte de una unidad dividida en partes iguales.</div>
+    </div>
+    
+    <div class="tiempo" style="margin-top:16px; font-size:clamp(20px, 2.2vw, 26px); max-width:fit-content">⏱ 55 minutos  ·  Yo hago → Hacemos → Tú haces</div>
+  </div>
 </div>`},
-
-/* 2 DETONANTE */
-{bread:'Sesión 1 › Exploración (5 min) › Situación detonante',time:'EXPLORACIÓN · 5 min',fL:'Exploración — Conflicto cognitivo inicial',
-clicks:3,html:`
+ 
+/* SLIDE 3: EXPLORACIÓN */
+{bread:'Sesión 1 › Exploración (5 min) › Situación detonante',time:'EXPLORACIÓN · 5 min',
+fL:'Exploración — Conflicto cognitivo inicial',clicks:3,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--amber);height:58px"></div>
-  <div><div class="slide-title">¿Cómo repartimos las empanadas?</div>
-  <div class="slide-instr">Lee con tu compañero y responde antes de continuar.</div></div>
+  <div class="accent" style="background:var(--amber)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--amber)">🔍 Exploración</div>
+    <div class="slide-title">¿Cómo repartimos las empanadas?</div>
+    <div class="slide-instr">Lee con tu compañero y responde antes de continuar.</div>
+  </div>
 </div>
-<div class="det-box">
+<div class="det-box" style="flex:none">
   <div class="det-label">Situación real · Medellín, Antioquia</div>
-  <div class="det-text">"En la tienda escolar de la I.E. Merceditas Gómez Martínez una bandeja de empanadas de pipián cuesta <strong>$3.200</strong>. Doña Marleny tiene que repartir exactamente <strong>3 empanadas entre 4 estudiantes</strong> que pagaron $800 cada uno. Ninguna le queda entera para cada uno.<br><br>¿Cómo escribirías en tu cuaderno la cantidad que le toca a cada estudiante?"</div>
-  <div class="det-ctx">Contexto verificable: las empanadas de pipián son producto típico antioqueño. Precio $800 corresponde al rango real de la tienda 2025–2026.</div>
+  <div class="det-text">"En la tienda escolar de la I.E. Merceditas Gómez Martínez, Doña Marleny tiene que repartir exactamente <strong>3 empanadas de pipián entre 4 estudiantes</strong> que pagaron $800 cada uno. Ninguna le queda entera para cada uno.<br><br>¿Cómo escribirías en tu cuaderno la cantidad que le toca a cada estudiante?"</div>
 </div>
-<div class="pregs-row">
-  <div class="preg-card" data-c="1"><div class="preg-n">1</div><div class="preg-t">¿Puedes escribir ese resultado como un número entero?</div></div>
-  <div class="preg-card" data-c="2"><div class="preg-n">2</div><div class="preg-t">¿Cómo dibujarías "la cuarta parte" de algo en tu cuaderno?</div></div>
-  <div class="preg-card" data-c="3"><div class="preg-n">3</div><div class="preg-t">¿Conoces algún símbolo matemático que represente esa idea?</div></div>
+<div class="pregs-row" style="flex:1;align-items:stretch">
+  <div class="preg-card" data-c="1" style="justify-content:center"><div class="preg-n">1</div><div class="preg-t">¿Puedes escribir ese resultado como un número entero?</div></div>
+  <div class="preg-card" data-c="2" style="justify-content:center"><div class="preg-n">2</div><div class="preg-t">¿Cómo dibujarías "la cuarta parte" de algo en tu cuaderno?</div></div>
+  <div class="preg-card" data-c="3" style="justify-content:center"><div class="preg-n">3</div><div class="preg-t">¿Conoces algún símbolo matemático que represente esa idea?</div></div>
 </div>`,
 onReveal:n=>document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>e.classList.add('vis'))},
-
-/* 3 YO HAGO — CONCEPTO */
-{cls:'s-yo',bread:'Sesión 1 › Yo hago (10 min) › Concepto de fracción',time:'YO HAGO · 10 min',fL:'Yo hago — El docente modela',clicks:0,html:`
+ 
+/* SLIDE 4: YO HAGO CONCEPTO */
+{bread:'Sesión 1 › Yo hago (10 min) › Concepto de fracción',time:'YO HAGO · 10 min',
+fL:'Yo hago — Conjetura → Definición formal',clicks:2,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--amber);height:58px"></div>
-  <div><div class="slide-title">¿Qué es una fracción? — El docente modela</div>
-  <div class="slide-instr">Observa. Antes de continuar escribe en tu cuaderno: "Una fracción es…"</div></div>
+  <div class="accent" style="background:var(--navy)"></div>
+  <div style="flex:1">
+    <div class="mbadge"> Yo hago</div>
+    <div class="slide-title">Primero escribe <em style="color:var(--blue-mid)">tu propia</em> definición</div>
+    <div class="slide-instr">Mira los modelos · Escribe en cuaderno · Luego Espacio revela la definición formal.</div>
+  </div>
 </div>
-<div class="yo-grid">
-  <div class="yo-panel">
-    <div class="yo-pt">Modelos de ¾</div>
-    <div class="frac-wrap">
-      <div class="frac-lbl">Barra fraccionaria — 3 de 4 partes iguales</div>
-      ${fracBar(3,4,'#1C3A6E',320,58)}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1">
+  <div style="display:flex;flex-direction:column;gap:11px">
+    <div class="yo-panel" style="flex:none">
+      <div class="yo-pt">Modelos de ¾</div>
+      <div class="frac-wrap">
+        <div class="frac-lbl">Barra — 3 de 4 partes iguales</div>
+        ${fracBar(3,4,'#1C3A6E',310,60)}
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:2px 0">
+        ${fracCircle(3,4,'#1C3A6E',80)}
+        <div style="font-size:clamp(17px,1.9vw,22px);color:var(--text2);line-height:1.4;font-style:italic">Barra y círculo:<br>misma cantidad,<br>3 de 4 iguales.</div>
+      </div>
     </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:26px;padding:8px 0">
-      ${fracCircle(3,4,'#1C3A6E',104)}
-      <div style="font-size:clamp(13px,1.4vw,16px);color:#A8C4E8;max-width:120px;line-height:1.55;font-style:italic">Ambos modelos representan la misma cantidad: 3 partes de 4 iguales.</div>
+    <div class="conj" style="flex:1;line-height:1.5;font-size:clamp(18px,2vw,23px)">
+      📝 <strong>Antes del clic, escribe en tu cuaderno:</strong><br>
+      • Una fracción es ___________________________<br>
+      • El número de arriba se llama ___ porque ___<br>
+      • El número de abajo se llama ___ porque ___
     </div>
   </div>
-  <div class="formula-box">
-    <div class="yo-pt" style="color:var(--blue-mid)">Definición formal</div>
-    <div class="formula-row">\\( \\dfrac{\\text{numerador}}{\\text{denominador}} \\)</div>
-    <div class="formula-row">\\( \\dfrac{a}{b} \\quad \\text{donde} \\quad b \\neq 0 \\)</div>
-    <div style="font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.85);line-height:1.6;padding:4px 0">Una fracción representa <strong>partes iguales tomadas</strong> de una unidad dividida en partes iguales.</div>
-  </div>
-</div>
-<div class="vocab">
-  <div class="voc-item"><div class="voc-k" style="color:var(--amber)">Numerador</div><div class="voc-v">Partes que tomamos</div></div>
-  <div style="color:rgba(255,255,255,.2);font-size:26px">|</div>
-  <div class="voc-item"><div class="voc-k" style="color:#6ED8C0">Denominador</div><div class="voc-v">Partes iguales de la unidad</div></div>
-  <div style="color:rgba(255,255,255,.2);font-size:26px">|</div>
-  <div class="voc-item"><div class="voc-k" style="color:var(--red)">b ≠ 0</div><div class="voc-v">Nunca dividimos entre cero</div></div>
-</div>`},
-
-/* 4 YO HAGO — EJEMPLOS */
-{cls:'s-yo',bread:'Sesión 1 › Yo hago — Ejemplos contextualizados',time:'YO HAGO · 10 min',fL:'Yo hago — Barras y círculos',
-clicks:8,html:`
-<div class="title-row">
-  <div class="accent" style="background:var(--teal);height:58px"></div>
-  <div><div class="slide-title">Fracciones en contextos de Medellín</div>
-  <div class="slide-instr">Clic 1: aparece la situación. Clic 2: aparece la fracción. Identifica numerador y denominador antes de revelar.</div></div>
-</div>
-<div class="ej-grid">
-  <div class="ej-card" style="border-color:var(--teal)" data-c="1">
-    <div class="ej-head"><div class="ej-n" style="background:var(--teal)">1</div><div class="ej-title">Metro de Medellín — Línea A</div></div>
-    <div class="ej-ctx">"Un estudiante recorre 3 de las 4 estaciones del tramo Niquía–Acevedo."</div>
-    ${fracBar(3,4,'#1A6B5A',300,50)}
-    <div class="ej-frac" data-c="2" style="opacity:0;transition:opacity .4s">\\( \\dfrac{3}{4} \\)</div>
-  </div>
-  <div class="ej-card" style="border-color:var(--amber)" data-c="3">
-    <div class="ej-head"><div class="ej-n" style="background:var(--amber)">2</div><div class="ej-title">Jugo de lulo — Tienda escolar</div></div>
-    <div class="ej-ctx">"Se sirvieron 2 de 5 vasos de jugo de lulo a $800 c/u."</div>
-    ${fracBar(2,5,'#C47C1A',300,50)}
-    <div class="ej-frac" data-c="4" style="opacity:0;transition:opacity .4s">\\( \\dfrac{2}{5} \\)</div>
-  </div>
-  <div class="ej-card" style="border-color:var(--blue-mid)" data-c="5">
-    <div class="ej-head"><div class="ej-n" style="background:var(--blue-mid)">3</div><div class="ej-title">Tableta de chocolate</div></div>
-    <div class="ej-ctx">"María comió 1 de 2 cuadros de una tableta de $1.500."</div>
-    ${fracBar(1,2,'#2E75B6',300,50)}
-    <div class="ej-frac" data-c="6" style="opacity:0;transition:opacity .4s">\\( \\dfrac{1}{2} \\)</div>
-  </div>
-  <div class="ej-card" style="border-color:var(--purple)" data-c="7">
-    <div class="ej-head"><div class="ej-n" style="background:var(--purple)">4</div><div class="ej-title">Monedas de la mesada</div></div>
-    <div class="ej-ctx">"Juan gastó 7 de sus 8 monedas de $200 en el transporte escolar."</div>
-    ${fracBar(7,8,'#6C3483',300,50)}
-    <div class="ej-frac" data-c="8" style="opacity:0;transition:opacity .4s">\\( \\dfrac{7}{8} \\)</div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div class="click-hint" style="padding:4px 0">⟶ Espacio para revelar la definición</div>
+    <div class="rv" id="rv1" style="flex:1">
+      <div class="rv-t"> Definición formal — PPT revela</div>
+      <div class="fml" style="margin:4px 0">\\( \\dfrac{a}{b} \\quad b \\neq 0 \\)</div>
+      <div style="font-size:clamp(19px,2.1vw,24px);color:var(--text);line-height:1.5">
+        <strong style="color:var(--navy)">a (numerador)</strong> = partes que tomamos<br>
+        <strong style="color:var(--navy)">b (denominador)</strong> = partes iguales en que se dividió la unidad<br>
+        <strong style="color:var(--red)">b ≠ 0</strong> — dividir entre cero es imposible
+      </div>
+      <div style="background:#EEF5FB;border-radius:8px;padding:9px 13px;font-size:clamp(17px,1.9vw,21px);color:var(--blue);font-style:italic;margin-top:4px">
+        🖊 Corrige tu conjetura con otro color.
+      </div>
+    </div>
+    <div class="rv" id="rv2" style="border-left-color:var(--blue-mid);flex:none">
+      <div class="rv-t">② Vocabulario clave</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:4px">
+        <div style="background:#FFF7ED;border-radius:8px;padding:10px;text-align:center;border-top:4px solid var(--amber)">
+          <div style="font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--amber);text-transform:uppercase">Numerador</div>
+          <div style="font-size:clamp(15px,1.6vw,18px);color:var(--text2);margin-top:3px">Partes que tomamos</div>
+        </div>
+        <div style="background:#E8F5F0;border-radius:8px;padding:10px;text-align:center;border-top:4px solid var(--teal)">
+          <div style="font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--teal);text-transform:uppercase">Denominador</div>
+          <div style="font-size:clamp(15px,1.6vw,18px);color:var(--text2);margin-top:3px">Partes iguales totales</div>
+        </div>
+        <div style="background:#FFEBEE;border-radius:8px;padding:10px;text-align:center;border-top:4px solid var(--red)">
+          <div style="font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--red);text-transform:uppercase">b ≠ 0</div>
+          <div style="font-size:clamp(15px,1.6vw,18px);color:var(--text2);margin-top:3px">Nunca entre cero</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>`,
 onReveal:n=>{
-  // clics impares: muestran la tarjeta (situación+barra); clics pares: muestran la fracción
-  const cardMap={1:1,3:3,5:5,7:7};
-  const fracMap={2:2,4:4,6:6,8:8};
-  if(cardMap[n]!==undefined) document.querySelectorAll(`.ej-card[data-c="${cardMap[n]}"]`).forEach(e=>e.classList.add('vis'));
-  if(fracMap[n]!==undefined) document.querySelectorAll(`.ej-frac[data-c="${fracMap[n]}"]`).forEach(e=>e.style.opacity='1');
+  if(n===1)document.getElementById('rv1').classList.add('vis');
+  if(n===2)document.getElementById('rv2').classList.add('vis');
 }},
-
-/* 5 FORMALIZACIÓN */
-{bread:'Sesión 1 › Formalización (10 min) › PPT animado',time:'FORMALIZACIÓN · 10 min',fL:'Formalización — El estudiante construye antes de ver',
-clicks:2,html:`
+ 
+/* SLIDE 5: EJEMPLOS 1 Y 2 */
+{bread:'Sesión 1 › Yo hago — Ejemplos 1 y 2',time:'YO HAGO · 10 min',
+fL:'Yo hago — Fracciones en Medellín (1 de 2)',
+clicks:2,
+onEnter:()=>{
+  initInterBar('ibar-s4-1', 4, '#1A6B5A', 'ifrac-s4-1');
+  initInterBar('ibar-s4-2', 5, '#C47C1A', 'ifrac-s4-2');
+},
+html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--blue-mid);height:58px"></div>
-  <div><div class="slide-title">Completa en tu cuaderno <em style="color:var(--blue-mid)">antes</em> de ver la respuesta</div>
-  <div class="slide-instr">Escribe: "La relación entre las partes y el todo es: ___" — el PPT revela.</div></div>
+  <div class="accent" style="background:var(--navy)"></div>
+  <div style="flex:1">
+    <div class="mbadge">📖 Yo hago</div>
+    <div class="slide-title">Fracciones en Medellín — Ejemplos 1 y 2</div>
+    <div class="slide-instr">Toca las partes de la barra para colorear · Espacio revela la fracción.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1">
+  <div class="ej-card vis" style="border-top-color:var(--teal)">
+    <div class="ej-head"><div class="ej-n" style="background:var(--teal)">1</div><div class="ej-title">Metro de Medellín — Línea A</div></div>
+    <div class="ej-ctx">"Un estudiante recorre algunas de las 4 estaciones del tramo Niquía–Acevedo.<br>¿Cuántas estaciones coloreamos?"</div>
+    <div id="ibar-s4-1" class="ibar-wrap"></div>
+    <div id="ifrac-s4-1" class="ej-frac" style="opacity:0;transition:opacity .5s"></div>
+  </div>
+  <div class="ej-card vis" style="border-top-color:var(--amber)">
+    <div class="ej-head"><div class="ej-n" style="background:var(--amber)">2</div><div class="ej-title">Jugo de lulo — Tienda escolar</div></div>
+    <div class="ej-ctx">"En una tienda escolar hay 5 vasos de jugo de lulo a $800 c/u.<br>¿Cuántos vasos coloreamos?"</div>
+    <div id="ibar-s4-2" class="ibar-wrap"></div>
+    <div id="ifrac-s4-2" class="ej-frac" style="opacity:0;transition:opacity .5s"></div>
+  </div>
+</div>`,
+onReveal:n=>{
+  if(n===1) revealInterFrac('ibar-s4-1','ifrac-s4-1',3,4);
+  if(n===2) revealInterFrac('ibar-s4-2','ifrac-s4-2',2,5);
+}},
+ 
+/* SLIDE 6: EJEMPLOS 3 Y 4 */
+{bread:'Sesión 1 › Yo hago — Ejemplos 3 y 4',time:'YO HAGO · 10 min',
+fL:'Yo hago — Fracciones en Medellín (2 de 2)',
+clicks:2,
+onEnter:()=>{
+  initInterBar('ibar-s5-1', 2, '#2E75B6', 'ifrac-s5-1');
+  initInterBar('ibar-s5-2', 8, '#6C3483', 'ifrac-s5-2');
+},
+html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--navy)"></div>
+  <div style="flex:1">
+    <div class="mbadge">📖 Yo hago</div>
+    <div class="slide-title">Fracciones en Medellín — Ejemplos 3 y 4</div>
+    <div class="slide-instr">Toca las partes de la barra para colorear · Espacio revela la fracción.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1">
+  <div class="ej-card vis" style="border-top-color:var(--blue-mid)">
+    <div class="ej-head"><div class="ej-n" style="background:var(--blue-mid)">3</div><div class="ej-title">Tableta de chocolate</div></div>
+    <div class="ej-ctx">"Una tableta de $1.500 tiene 2 cuadros iguales.<br>¿Cuántos cuadros coloreamos?"</div>
+    <div id="ibar-s5-1" class="ibar-wrap"></div>
+    <div id="ifrac-s5-1" class="ej-frac" style="opacity:0;transition:opacity .5s"></div>
+  </div>
+  <div class="ej-card vis" style="border-top-color:var(--purple)">
+    <div class="ej-head"><div class="ej-n" style="background:var(--purple)">4</div><div class="ej-title">Monedas de la mesada</div></div>
+    <div class="ej-ctx">"Juan tiene 8 monedas de $200 para el transporte escolar.<br>¿Cuántas monedas coloreamos?"</div>
+    <div id="ibar-s5-2" class="ibar-wrap"></div>
+    <div id="ifrac-s5-2" class="ej-frac" style="opacity:0;transition:opacity .5s"></div>
+  </div>
+</div>`,
+onReveal:n=>{
+  if(n===1) revealInterFrac('ibar-s5-1','ifrac-s5-1',1,2);
+  if(n===2) revealInterFrac('ibar-s5-2','ifrac-s5-2',7,8);
+}},
+ 
+/* SLIDE 7: FORMALIZACIÓN (Barra arriba, Círculo abajo) */
+{bread:'Sesión 1 › Formalización (10 min) › PPT animado',time:'FORMALIZACIÓN · 10 min',
+fL:'Formalización — Conjetura antes del PPT',clicks:2,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--blue-mid)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--blue-mid)">✏️ Formalización</div>
+    <div class="slide-title">Completa en tu cuaderno <em style="color:var(--blue-mid)">antes</em> de ver la respuesta</div>
+    <div class="slide-instr">Escribe: "La relación entre las partes y el todo es: ___" — el PPT revela.</div>
+  </div>
 </div>
 <div class="formal-layout">
   <div class="formal-l">
     <div class="model-box">
       <div class="model-box-t">Modelo de ¾ — referencia</div>
-      <div style="display:flex;gap:18px;align-items:center;flex:1">
-        <div style="flex:1">${fracBar(3,4,'#1C3A6E',230,54)}<div style="font-size:13px;color:var(--text3);text-align:center;margin-top:7px">Barra fraccionaria</div></div>
-        <div>${fracCircle(3,4,'#1C3A6E',90)}<div style="font-size:13px;color:var(--text3);text-align:center;margin-top:7px">Círculo</div></div>
+      <!-- IMÁGENES AMPLIADAS Y VERTICALES -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:15px;flex:1;justify-content:center;padding-top:10px">
+        <div style="width:100%">${fracBar(3,4,'#1C3A6E',600,120)}<div style="font-size:clamp(20px,2.2vw,24px);color:var(--text3);text-align:center;margin-top:12px;font-weight:600">Barra fraccionaria</div></div>
+        <div>${fracCircle(3,4,'#1C3A6E',220)}<div style="font-size:clamp(20px,2.2vw,24px);color:var(--text3);text-align:center;margin-top:12px;font-weight:600">Círculo</div></div>
       </div>
+      <!-- FIN IMÁGENES AMPLIADAS -->
     </div>
-    <div class="conj">📝 <strong>Tu turno:</strong> Antes del clic, escribe en el cuaderno:<br>
+    <div class="conj" style="font-size:clamp(18px,2vw,22px);line-height:1.45;padding:12px 15px">📝 <strong>Tu turno — antes del clic:</strong><br>
       • El número de arriba se llama ___ porque ___<br>
       • El número de abajo se llama ___ porque ___<br>
       • El denominador nunca puede ser ___ porque ___</div>
   </div>
   <div class="formal-r">
-    <div class="click-hint">⟶ Pulsa Espacio para revelar</div>
+    <div class="click-hint"> Pulsa Espacio para revelar</div>
     <div class="rv" id="rv1">
       <div class="rv-t">① Definición formal — PPT revela</div>
-      <div class="fml dark">\\( \\dfrac{a}{b} \\quad b \\neq 0 \\)</div>
-      <div style="font-size:clamp(14px,1.55vw,18px);color:rgba(255,255,255,.85);line-height:1.65">
-        <strong style="color:#A8C4E8">a</strong> = partes que tomamos de la unidad<br>
-        <strong style="color:#A8C4E8">b</strong> = partes iguales en que se dividió la unidad<br>
+      <div class="fml">\\( \\dfrac{a}{b} \\quad b \\neq 0 \\)</div>
+      <div style="font-size:clamp(19px,2.1vw,24px);color:var(--text);line-height:1.5">
+        <strong style="color:var(--navy)">a</strong> = partes que tomamos de la unidad<br>
+        <strong style="color:var(--navy)">b</strong> = partes iguales en que se dividió la unidad<br>
         <strong style="color:var(--red)">b ≠ 0</strong> — dividir entre cero es imposible
       </div>
     </div>
-    <div class="rv light" id="rv2">
+    <div class="rv" id="rv2" style="border-left-color:var(--blue-mid)">
       <div class="rv-t">② Partes — compara con tu conjetura</div>
       <div class="parts-g">
-        <div class="pt" style="background:#EBF4FB;border-left:3px solid var(--amber)">
-          <div class="pt-n" style="color:var(--amber)">Numerador</div>
-          <div class="pt-d" style="color:var(--text2)">Cuántas partes <strong>tomamos</strong>. Está arriba de la raya.</div>
+        <div class="pt" style="background:#FFF7ED;border-left:4px solid var(--amber)">
+          <div class="pt-n" style="color:var(--amber);font-size:clamp(18px,2vw,22px)">Numerador</div>
+          <div class="pt-d" style="font-size:clamp(17px,1.9vw,21px)">Cuántas partes <strong>tomamos</strong>. Arriba de la raya.</div>
         </div>
-        <div class="pt" style="background:#E8F5E9;border-left:3px solid var(--teal)">
-          <div class="pt-n" style="color:var(--teal)">Denominador</div>
-          <div class="pt-d" style="color:var(--text2)">En cuántas partes <strong>iguales</strong> dividimos la unidad. Abajo.</div>
+        <div class="pt" style="background:#E8F5F0;border-left:4px solid var(--teal)">
+          <div class="pt-n" style="color:var(--teal);font-size:clamp(18px,2vw,22px)">Denominador</div>
+          <div class="pt-d" style="font-size:clamp(17px,1.9vw,21px)">En cuántas partes <strong>iguales</strong> se dividió. Abajo.</div>
         </div>
       </div>
     </div>
   </div>
 </div>`,
 onReveal:n=>{if(n===1)document.getElementById('rv1').classList.add('vis');if(n===2)document.getElementById('rv2').classList.add('vis');}},
-
-/* 6 HACEMOS */
-{bread:'Sesión 1 › Hacemos (15 min) › Práctica guiada en tríos',time:'HACEMOS · 15 min',fL:'Hacemos — Práctica guiada en tríos',
-clicks:8,html:`
+ 
+/* SLIDE 8: HACEMOS 1 */
+{bread:'Sesión 1 › Hacemos (15 min) › Tríos (1 de 2)',time:'HACEMOS · 15 min',
+fL:'Hacemos — Práctica guiada en tríos (1 de 2)',clicks:4,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--teal);height:58px"></div>
-  <div><div class="slide-title">Identificamos fracciones en contextos reales — Tríos</div>
-  <div class="slide-instr">Clics 1–4: aparecen las situaciones. Clics 5–8: revelan la respuesta correcta.</div></div>
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)">🤝 Hacemos</div>
+    <div class="slide-title">Identificamos fracciones — Tríos (1 de 2)</div>
+    <div class="slide-instr">Clics 1–2: situaciones. Clics 3–4: respuesta correcta.</div>
+  </div>
 </div>
-<div class="hac-grid">
-  <div class="hac-card" style="border-color:var(--teal)" data-c="1">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;flex:1">
+  <div class="hac-card" style="border-top-color:var(--teal)" data-c="1">
     <div class="hac-head"><div class="hac-n" style="background:var(--teal)">1</div><div class="hac-title">Bandeja paisa</div></div>
     <div class="hac-ctx">De 8 ingredientes de una bandeja paisa, 3 son vegetales.</div>
-    <div class="hac-bar">${fracBar(3,8,'#1A6B5A',260,44)}</div>
+    <div class="hac-bar">${fracBar(3,8,'#1A6B5A',280,52)}</div>
     <div class="hac-task">Escribe la fracción y clasifícala: ¿propia o impropia?</div>
-    <div class="hac-answer" data-c="5" style="opacity:0;transition:opacity .4s;background:#E8F5E9;border-radius:8px;padding:8px 12px;font-size:clamp(14px,1.5vw,17px);color:var(--teal);font-weight:700">✓ \\( \\frac{3}{8} \\) — fracción propia (3 &lt; 8)</div>
+    <div class="hac-answer" data-c="3" style="opacity:0;transition:opacity .4s;background:#E8F5F0;color:var(--teal);font-weight:700">✓ \\( \\frac{3}{8} \\) — fracción propia (3 &lt; 8)</div>
   </div>
-  <div class="hac-card" style="border-color:var(--amber)" data-c="2">
+  <div class="hac-card" style="border-top-color:var(--amber)" data-c="2">
     <div class="hac-head"><div class="hac-n" style="background:var(--amber)">2</div><div class="hac-title">Bus de Medellín</div></div>
     <div class="hac-ctx">Un bus recorrió 2 de 5 km de su ruta en la ciudad.</div>
-    <div class="hac-bar">${fracBar(2,5,'#C47C1A',260,44)}</div>
+    <div class="hac-bar">${fracBar(2,5,'#C47C1A',280,52)}</div>
     <div class="hac-task">Dibuja también el modelo de círculo.</div>
-    <div class="hac-answer" data-c="6" style="opacity:0;transition:opacity .4s;background:#FFF8F0;border-radius:8px;padding:8px 12px;font-size:clamp(14px,1.5vw,17px);color:var(--amber);font-weight:700">✓ \\( \\frac{2}{5} \\) — fracción propia (2 &lt; 5)</div>
-  </div>
-  <div class="hac-card" style="border-color:var(--blue-mid)" data-c="3">
-    <div class="hac-head"><div class="hac-n" style="background:var(--blue-mid)">3</div><div class="hac-title">Tableta de chocolate</div></div>
-    <div class="hac-ctx">María comió 1 de 2 cuadros de una tableta de $1.500.</div>
-    <div class="hac-bar">${fracBar(1,2,'#1C3A6E',260,44)}</div>
-    <div class="hac-task">Escribe una oración que explique qué representa cada parte.</div>
-    <div class="hac-answer" data-c="7" style="opacity:0;transition:opacity .4s;background:#EBF4FB;border-radius:8px;padding:8px 12px;font-size:clamp(14px,1.5vw,17px);color:var(--blue);font-weight:700">✓ \\( \\frac{1}{2} \\) — 1 cuadro de 2 iguales = mitad</div>
-  </div>
-  <div class="hac-card" style="border-color:var(--purple)" data-c="4">
-    <div class="hac-head"><div class="hac-n" style="background:var(--purple)">4</div><div class="hac-title">Pago de la mesada</div></div>
-    <div class="hac-ctx">Juan gastó 7 de sus 8 monedas de $200 en el transporte.</div>
-    <div class="hac-bar">${fracBar(7,8,'#6C3483',260,44)}</div>
-    <div class="hac-task">¿Cuántas monedas le quedaron? Exprésalo como fracción.</div>
-    <div class="hac-answer" data-c="8" style="opacity:0;transition:opacity .4s;background:#F3E5F5;border-radius:8px;padding:8px 12px;font-size:clamp(14px,1.5vw,17px);color:var(--purple);font-weight:700">✓ Gastó \\( \\frac{7}{8} \\) · Le quedó \\( \\frac{1}{8} \\)</div>
+    <div class="hac-answer" data-c="4" style="opacity:0;transition:opacity .4s;background:#FFF7ED;color:var(--amber);font-weight:700">✓ \\( \\frac{2}{5} \\) — fracción propia (2 &lt; 5)</div>
   </div>
 </div>`,
 onReveal:n=>{
-  if(n<=4) document.querySelectorAll(`.hac-card[data-c="${n}"]`).forEach(e=>e.classList.add('vis'));
-  if(n>=5) document.querySelectorAll(`.hac-answer[data-c="${n}"]`).forEach(e=>e.style.opacity='1');
+  if(n===1)document.querySelectorAll('.hac-card[data-c="1"]').forEach(e=>e.classList.add('vis'));
+  if(n===2)document.querySelectorAll('.hac-card[data-c="2"]').forEach(e=>e.classList.add('vis'));
+  if(n===3)document.querySelectorAll('.hac-answer[data-c="3"]').forEach(e=>e.style.opacity='1');
+  if(n===4)document.querySelectorAll('.hac-answer[data-c="4"]').forEach(e=>e.style.opacity='1');
 }},
-
-/* 7 ACTIVIDAD INTERACTIVA — VOTACIÓN EN VIVO */
-{bread:'Sesión 1 › Actividad interactiva › ¿Qué fracción representa esta barra?',time:'PARTICIPACIÓN · 5 min',fL:'Actividad interactiva — Votación en tiempo real',
-clicks:1,
-onEnter:()=>{ startPolling(); fbGet().then(d=>{ if(d) renderBars(d); updateStatus(d); }); },
-onLeave:()=>{ stopPolling(); },
+ 
+/* SLIDE 9: HACEMOS 2 */
+{bread:'Sesión 1 › Hacemos (15 min) › Tríos (2 de 2)',time:'HACEMOS · 15 min',
+fL:'Hacemos — Práctica guiada en tríos (2 de 2)',clicks:4,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)"> Hacemos</div>
+    <div class="slide-title">Identificamos fracciones — Tríos (2 de 2)</div>
+    <div class="slide-instr">Clics 1–2: situaciones. Clics 3–4: respuesta correcta.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;flex:1">
+  <div class="hac-card" style="border-top-color:var(--blue-mid)" data-c="1">
+    <div class="hac-head"><div class="hac-n" style="background:var(--blue-mid)">3</div><div class="hac-title">Tableta de chocolate</div></div>
+    <div class="hac-ctx">María comió 1 de 2 cuadros de una tableta de $1.500.</div>
+    <div class="hac-bar">${fracBar(1,2,'#1C3A6E',280,52)}</div>
+    <div class="hac-task">Escribe una oración que explique qué representa cada parte.</div>
+    <div class="hac-answer" data-c="3" style="opacity:0;transition:opacity .4s;background:#EEF5FB;color:var(--blue);font-weight:700">✓ \\( \\frac{1}{2} \\) — 1 cuadro de 2 iguales = mitad</div>
+  </div>
+  <div class="hac-card" style="border-top-color:var(--purple)" data-c="2">
+    <div class="hac-head"><div class="hac-n" style="background:var(--purple)">4</div><div class="hac-title">Pago de la mesada</div></div>
+    <div class="hac-ctx">Juan gastó 7 de sus 8 monedas de $200 en el transporte.</div>
+    <div class="hac-bar">${fracBar(7,8,'#6C3483',280,52)}</div>
+    <div class="hac-task">¿Cuántas monedas le quedaron? Exprésalo como fracción.</div>
+    <div class="hac-answer" data-c="4" style="opacity:0;transition:opacity .4s;background:#F3E5F5;color:var(--purple);font-weight:700">✓ Gastó \\( \\frac{7}{8} \\) · Le quedó \\( \\frac{1}{8} \\)</div>
+  </div>
+</div>`,
+onReveal:n=>{
+  if(n===1)document.querySelectorAll('.hac-card[data-c="1"]').forEach(e=>e.classList.add('vis'));
+  if(n===2)document.querySelectorAll('.hac-card[data-c="2"]').forEach(e=>e.classList.add('vis'));
+  if(n===3)document.querySelectorAll('.hac-answer[data-c="3"]').forEach(e=>e.style.opacity='1');
+  if(n===4)document.querySelectorAll('.hac-answer[data-c="4"]').forEach(e=>e.style.opacity='1');
+}},
+ 
+/* SLIDE 10: VOTACIÓN */
+{bread:'Sesión 1 › Actividad interactiva › Votación en vivo',time:'PARTICIPACIÓN · 5 min',
+fL:'Actividad interactiva — Votación en tiempo real',clicks:1,
+onEnter:()=>{startPolling();fbGet().then(d=>{if(d)renderBars(d);updateStatus(d);});},
+onLeave:()=>{stopPolling();},
 html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--purple);height:58px"></div>
-  <div><div class="slide-title">¿Qué fracción representa esta barra? — Vota en vivo</div>
-  <div class="slide-instr">Abre el enlace en tu celular o computador y elige tu respuesta. Los resultados aparecen en pantalla.</div></div>
+  <div class="accent" style="background:var(--purple)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--purple)">🗳️ Votación</div>
+    <div class="slide-title">¿Qué fracción representa esta barra? — Vota en vivo</div>
+    <div class="slide-instr">Abre el enlace en tu celular y elige tu respuesta.</div>
+  </div>
 </div>
 <div class="vote-url-bar">
-  <div class="vote-url-lbl">Enlace para estudiantes →</div>
+  <div class="vote-url-lbl">Enlace →</div>
   <div class="vote-url-val">bit.ly/frac-merceditas</div>
   <div class="vote-status" id="vote-status">⏳ Esperando votos…</div>
-  <button onclick="resetVotes()" style="margin-left:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#A8C4E8;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit">↺ Reiniciar</button>
+  <button onclick="resetVotes()" style="margin-left:12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#C8DDEF;border-radius:8px;padding:7px 16px;font-size:15px;cursor:pointer;font-family:inherit"> Reiniciar</button>
 </div>
 <div class="inter-layout">
   <div class="inter-l">
     <div class="question-box">
       <div class="q-label">Pregunta del grupo</div>
-      <div style="display:flex;align-items:center;gap:22px;margin:14px 0">
-        ${fracBar(3,5,'#6C3483',220,58)}
-        <div style="font-size:clamp(15px,1.65vw,19px);color:var(--text2);line-height:1.5">Esta barra representa una fracción.<br><strong>¿Cuál es?</strong></div>
+      <div style="display:flex;align-items:center;gap:20px;margin:13px 0">
+        ${fracBar(3,5,'#6C3483',220,66)}
+        <div style="font-size:clamp(21px,2.3vw,27px);color:var(--text2);line-height:1.5">Esta barra representa una fracción.<br><strong>¿Cuál es?</strong></div>
       </div>
       <div class="vote-area">
-        <button class="vote-btn" id="vba" onclick="voteFor('a')"><div class="vote-indicator"></div><span>A) &nbsp;\\( \\dfrac{3}{5} \\) &nbsp;— tres quintos</span></button>
-        <button class="vote-btn" id="vbb" onclick="voteFor('b')"><div class="vote-indicator"></div><span>B) &nbsp;\\( \\dfrac{5}{3} \\) &nbsp;— cinco tercios</span></button>
-        <button class="vote-btn" id="vbc" onclick="voteFor('c')"><div class="vote-indicator"></div><span>C) &nbsp;\\( \\dfrac{2}{5} \\) &nbsp;— dos quintos</span></button>
+        <button class="vote-btn" id="vba" onclick="voteFor('a')"><div class="vote-indicator"></div><span>A)  \\( \\dfrac{3}{5} \\)  — tres quintos</span></button>
+        <button class="vote-btn" id="vbb" onclick="voteFor('b')"><div class="vote-indicator"></div><span>B)  \\( \\dfrac{5}{3} \\)  — cinco tercios</span></button>
+        <button class="vote-btn" id="vbc" onclick="voteFor('c')"><div class="vote-indicator"></div><span>C)  \\( \\frac{2}{5} \\)  — dos quintos</span></button>
       </div>
-      <div id="already-voted" style="display:none;background:#FFEBEE;border-radius:8px;padding:10px 14px;font-size:14px;color:var(--red);margin-top:8px">Ya votaste en esta sesión. Puedes ver los resultados en pantalla.</div>
-      <div style="background:var(--warm);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text2);text-align:center;margin-top:8px">Los resultados se actualizan automáticamente cada 2–3 segundos</div>
+      <div id="already-voted" style="display:none;background:#FFEBEE;border-radius:8px;padding:12px 14px;font-size:17px;color:var(--red);margin-top:8px">Ya votaste en esta sesión.</div>
     </div>
-    <button class="sim-btn" onclick="simVotes()" style="margin-top:4px">▶ Demo: simular votos del grupo</button>
+    <button class="sim-btn" onclick="simVotes()">▶ Demo: simular votos del grupo</button>
   </div>
   <div class="inter-r">
     <div class="results-panel">
@@ -637,89 +846,90 @@ html:`
       <div class="vote-total" id="vote-total">0 respuestas</div>
     </div>
     <div class="answer-box" id="answer-reveal" style="opacity:0;transition:opacity .5s;pointer-events:none">
-      <div class="answer-lbl">Respuesta correcta — revelar con Espacio</div>
-      <div class="answer-txt">La respuesta es <strong>A) \\( \\dfrac{3}{5} \\)</strong> — tres quintos.<br>
-      <span style="font-size:clamp(13px,1.4vw,16px);color:var(--text2)">3 partes coloreadas = numerador. 5 partes iguales en total = denominador. Las 2 partes sin colorear <em>no</em> van en el numerador.</span></div>
+      <div class="answer-lbl">Respuesta correcta — Espacio para revelar</div>
+      <div class="answer-txt">Respuesta: <strong>A) \\( \\dfrac{3}{5} \\)</strong> — tres quintos.<br>
+      <span style="font-size:clamp(19px,2.1vw,25px);color:var(--text2)">3 partes coloreadas = numerador · 5 partes en total = denominador.</span></div>
     </div>
   </div>
 </div>`,
-onReveal:n=>{
-  if(n===1){const a=document.getElementById('answer-reveal');if(a){a.style.opacity='1';a.style.pointerEvents='all';}}
-}},
-
-/* 8 GEOGEBRA — Dibuja Fracciones V2 */
-{bread:'Sesión 1 › Exploración interactiva › Applet GeoGebra',time:'APPLET · 8 min',fL:'GeoGebra — Dibuja tu propia fracción',
-clicks:0,html:`
+onReveal:n=>{if(n===1){const a=document.getElementById('answer-reveal');if(a){a.style.opacity='1';a.style.pointerEvents='all';}}}},
+ 
+/* SLIDE 11: GEOGEBRA */
+{bread:'Sesión 1 › Exploración interactiva › GeoGebra',time:'APPLET · 8 min',
+fL:'GeoGebra — Dibuja tu propia fracción',clicks:0,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--teal);height:58px"></div>
-  <div><div class="slide-title">Dibuja tu propia fracción — GeoGebra</div>
-  <div class="slide-instr">Ajusta los deslizadores de Numerador y Denominador. Cambia el tipo de gráfico: lineal, circular o rectangular.</div></div>
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)">🎛️ Applet</div>
+    <div class="slide-title">Dibuja tu propia fracción — GeoGebra</div>
+    <div class="slide-instr">Ajusta Numerador y Denominador. Cambia el tipo de gráfico: lineal, circular, rectangular.</div>
+  </div>
 </div>
 <div class="ggb-layout">
   <div class="ggb-wrap">
-    <iframe
-      src="https://www.geogebra.org/material/iframe/id/HWEGBuXF/width/900/height/400/border/ffffff/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
-      title="Dibuja Fracciones V2 — GeoGebra"
-      allowfullscreen
-      loading="eager"
-      style="width:100%;height:100%;border:none;display:block">
-    </iframe>
+    <iframe src="https://www.geogebra.org/material/iframe/id/HWEGBuXF/width/900/height/400/border/ffffff/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
+      title="Dibuja Fracciones V2" allowfullscreen loading="eager"
+      style="width:100%;height:100%;border:none;display:block"></iframe>
   </div>
   <div class="ggb-nota">
-    <strong style="color:var(--teal)">Actividad:</strong> Dibuja estas fracciones una por una y discute con tu trío: &nbsp;
-    <strong>3/5</strong> &nbsp;·&nbsp; <strong>6/9</strong> &nbsp;·&nbsp; <strong>4/10</strong> &nbsp;·&nbsp; <strong>2/5</strong> &nbsp;·&nbsp; <strong>8/20</strong>.
-    &nbsp; ¿Las últimas tres tienen algo en común? ¿Qué notas entre el numerador y el denominador cuando el valor es el mismo?
+    <strong style="color:var(--teal)">Actividad:</strong> Dibuja estas fracciones y discute con tu trío:  <strong>3/5</strong>  ·  <strong>6/9</strong>  ·  <strong>4/10</strong>  ·  <strong>2/5</strong>  ·  <strong>8/20</strong>.  ¿Las últimas cuatro tienen algo en común?
   </div>
 </div>`},
-
-/* 9 TRANSICIÓN */
+ 
+/* SLIDE 12: TRANSICIÓN */
 {cls:'s-trans',noH:true,noF:true,clicks:0,html:`
 <div style="display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
   <div class="trans-big">TÚ HACES</div>
-  <div style="width:90px;height:2px;background:rgba(255,255,255,.2);border-radius:1px"></div>
+  <div style="width:90px;height:3px;background:rgba(255,255,255,.25);border-radius:2px"></div>
   <div class="trans-sub">Actividad independiente — 15 minutos</div>
-  <div class="trans-note">Trabaja de forma individual. Al terminar, compara con tu pareja.</div>
+  <div class="trans-note">Trabaja solo. Al terminar, compara con tu pareja.</div>
 </div>`},
-
-/* 10 TÚ HACES */
-{bread:'Sesión 1 › Tú haces (15 min) › Trabajo independiente',time:'TÚ HACES · 15 min',fL:'Tú haces — Trabajo independiente',
-clicks:4,html:`
+ 
+/* SLIDE 13: TÚ HACES */
+{bread:'Sesión 1 › Tú haces (15 min) › Trabajo independiente',time:'TÚ HACES · 15 min',
+fL:'Tú haces — Trabajo independiente',clicks:4,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--red);height:58px"></div>
-  <div><div class="slide-title">Demuestra lo que aprendiste — Individualmente</div>
-  <div class="slide-instr">Resuelve en tu cuaderno. Muestra el modelo (barra o círculo) y escribe la fracción.</div></div>
+  <div class="accent" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--red)">✍️ Tú haces</div>
+    <div class="slide-title">Demuestra lo que aprendiste — Individualmente</div>
+    <div class="slide-instr">Resuelve en tu cuaderno. Muestra el modelo y escribe la fracción.</div>
+  </div>
 </div>
 <div class="hac-grid">
-  <div class="hac-card" style="border-color:var(--teal)" data-c="1">
+  <div class="hac-card" style="border-top-color:var(--teal)" data-c="1">
     <div class="hac-head"><div class="hac-n" style="background:var(--teal)">1</div><div class="hac-title">Parque Explora — Medellín</div></div>
-    <div class="hac-ctx">En el Parque Explora hay 6 salas. Nicolás visitó 5 de ellas. ¿Qué fracción del parque visitó?</div>
+    <div class="hac-ctx">En el Parque Explora hay 6 salas. Nicolás visitó 5. ¿Qué fracción visitó?</div>
     <div class="hac-task">Dibuja la barra, escribe la fracción y nombra sus partes.</div>
   </div>
-  <div class="hac-card" style="border-color:var(--amber)" data-c="2">
+  <div class="hac-card" style="border-top-color:var(--amber)" data-c="2">
     <div class="hac-head"><div class="hac-n" style="background:var(--amber)">2</div><div class="hac-title">Tienda escolar</div></div>
     <div class="hac-ctx">La tienda tiene 8 tipos de empanadas. Solo 3 llevan pollo. ¿Qué fracción son de pollo?</div>
     <div class="hac-task">Representa con círculo y escribe la fracción en notación a/b.</div>
   </div>
-  <div class="hac-card" style="border-color:var(--blue-mid)" data-c="3">
+  <div class="hac-card" style="border-top-color:var(--blue-mid)" data-c="3">
     <div class="hac-head"><div class="hac-n" style="background:var(--blue-mid)">3</div><div class="hac-title">Nombra la fracción</div></div>
     <div class="hac-ctx">¿Cuál es el numerador y denominador de 7/8? ¿Qué representa cada uno?</div>
     <div class="hac-task">Escribe una oración completa explicando cada parte.</div>
   </div>
-  <div class="hac-card" style="border-color:var(--purple);border-width:3px" data-c="4">
+  <div class="hac-card" style="border-top-color:var(--purple)" data-c="4">
     <div class="hac-head"><div class="hac-n" style="background:var(--purple)">★</div><div class="hac-title" style="color:var(--purple)">Variante — Profundización</div></div>
     <div class="hac-ctx">Una fracción tiene denominador 5 y representa "más de la mitad". ¿Cuáles pueden ser? Justifica.</div>
-    <div class="hac-task" style="background:#F3E5F5;color:var(--purple)">Lista al menos 2 posibilidades y dibuja una barra para cada una.</div>
+    <div class="hac-task" style="background:#F3E5F5;color:var(--purple);border-left-color:var(--purple)">Lista al menos 2 posibilidades y dibuja una barra para cada una.</div>
   </div>
 </div>`,
 onReveal:n=>document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>e.classList.add('vis'))},
-
-/* 11 RÚBRICA */
-{bread:'Sesión 1 › Rúbrica de desempeño',time:'EVALUACIÓN',fL:'Rúbrica formativa — Sesión 1',
-clicks:4,html:`
+ 
+/* SLIDE 14: RÚBRICA */
+{bread:'Sesión 1 › Rúbrica de desempeño',time:'EVALUACIÓN',
+fL:'Rúbrica formativa — Sesión 1',clicks:4,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--blue-mid);height:58px"></div>
-  <div><div class="slide-title">Rúbrica — ¿Cómo voy con las fracciones?</div>
-  <div class="slide-instr">Cada fila aparece con un clic. Evalúa tu desempeño honestamente.</div></div>
+  <div class="accent" style="background:var(--blue-mid)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--blue-mid)"> Rúbrica</div>
+    <div class="slide-title">¿Cómo voy con las fracciones?</div>
+    <div class="slide-instr">Cada fila aparece con un clic. Evalúa tu desempeño honestamente.</div>
+  </div>
 </div>
 <div style="flex:1;overflow:auto">
 <table class="rub-table">
@@ -732,20 +942,23 @@ clicks:4,html:`
   </tr></thead>
   <tbody>
     <tr data-c="1"><td>Concepto de fracción</td><td>Define fracción con sus dos partes y justifica por qué b≠0.</td><td>Identifica numerador y denominador correctamente.</td><td>Identifica la fracción pero no explica el significado de cada parte.</td><td>Confunde numerador y denominador.</td></tr>
-    <tr data-c="2"><td>Representación gráfica</td><td>Dibuja barra y círculo con partes exactamente iguales y sombreado correcto.</td><td>Dibuja barra o círculo con partes aproximadamente iguales.</td><td>Dibuja el modelo pero las partes no son iguales.</td><td>No divide en partes iguales o no dibuja el modelo.</td></tr>
+    <tr data-c="2"><td>Representación gráfica</td><td>Dibuja barra y círculo con partes exactamente iguales y sombreado correcto.</td><td>Dibuja barra o círculo con partes aproximadamente iguales.</td><td>Dibuja el modelo pero las partes no son iguales.</td><td>No divide en partes iguales.</td></tr>
     <tr data-c="3"><td>Contexto real</td><td>Resuelve la situación, escribe la fracción y explica con sus propias palabras.</td><td>Resuelve la situación y escribe la fracción correcta.</td><td>Intenta la situación pero la fracción no corresponde.</td><td>No relaciona la situación con una fracción.</td></tr>
     <tr data-c="4"><td>Metacognición</td><td>Identifica qué aprendió, qué le costó y cómo lo superó.</td><td>Responde las tres preguntas metacognitivas con claridad.</td><td>Responde parcialmente las preguntas.</td><td>Responde con sí/no o no responde.</td></tr>
   </tbody>
 </table>
 </div>`,
 onReveal:n=>document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>e.classList.add('vis'))},
-
-/* 12 METACOGNICIÓN */
-{bread:'Sesión 1 › Metacognición (5 min) › ¿Cómo me fue?',time:'METACOGNICIÓN · 5 min',fL:'Metacognición — Semáforo de comprensión',
-clicks:3,html:`
+ 
+/* SLIDE 15: METACOGNICIÓN */
+{bread:'Sesión 1 › Metacognición (5 min) › Semáforo',time:'METACOGNICIÓN · 5 min',
+fL:'Metacognición — Semáforo de comprensión',clicks:3,html:`
 <div class="title-row">
-  <div class="accent" style="background:var(--teal);height:58px"></div>
-  <div><div class="slide-title">¿Cómo fue mi aprendizaje hoy?</div></div>
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)">🚦 Metacognición</div>
+    <div class="slide-title">¿Cómo fue mi aprendizaje hoy?</div>
+  </div>
 </div>
 <div class="meta-layout">
   <div class="meta-l">
@@ -770,13 +983,13 @@ clicks:3,html:`
   </div>
 </div>`,
 onReveal:n=>document.querySelectorAll(`[data-c="${n}"]`).forEach(e=>e.classList.add('vis'))}
-
+ 
 ];
-
-/* ── ENGINE ── */
+ 
+/* ENGINE */
 let cur=0,clicks=0;
 const deck=document.getElementById('deck');
-
+ 
 function buildSlide(idx){
   const s=SLIDES[idx];
   const d=document.createElement('div');
@@ -785,66 +998,39 @@ function buildSlide(idx){
   if(!s.noH)h+=`<div class="hdr"><span class="hdr-b">${s.bread||''}</span>${s.time?`<span class="hdr-t">${s.time}</span>`:''}</div>`;
   h+=`<div class="body">${s.html}</div>`;
   if(!s.noF)h+=`<div class="ftr"><span>${s.fL||''}</span><span>I.E. Merceditas Gómez Martínez · Grado 7°</span></div>`;
-  d.innerHTML=h;
-  return d;
+  d.innerHTML=h;return d;
 }
-
 function show(idx,dir){
   const prev=deck.querySelector('.slide.active');
-  if(prev){
-    prev.classList.remove('active','enter-r','enter-l');
-    // onLeave del slide anterior
-    if(SLIDES[cur-dir] && SLIDES[cur-dir].onLeave) SLIDES[cur-dir].onLeave();
-  }
-  const el=buildSlide(idx);
-  deck.appendChild(el);
-  const all=deck.querySelectorAll('.slide');
-  if(all.length>3)all[0].remove();
+  if(prev){prev.classList.remove('active','enter-r','enter-l');if(SLIDES[cur-dir]&&SLIDES[cur-dir].onLeave)SLIDES[cur-dir].onLeave();}
+  const el=buildSlide(idx);deck.appendChild(el);
+  const all=deck.querySelectorAll('.slide');if(all.length>3)all[0].remove();
   requestAnimationFrame(()=>{
-    el.classList.add('active');
-    el.classList.add(dir>=0?'enter-r':'enter-l');
-    setTimeout(()=>el.classList.remove('enter-r','enter-l'),420);
-    doKatex(el);
-    // onEnter del slide nuevo
-    if(SLIDES[idx].onEnter) SLIDES[idx].onEnter();
+    el.classList.add('active');el.classList.add(dir>=0?'enter-r':'enter-l');
+    setTimeout(()=>el.classList.remove('enter-r','enter-l'),380);
+    doKatex(el);if(SLIDES[idx].onEnter)SLIDES[idx].onEnter();
   });
   clicks=0;
   document.getElementById('ncnt').textContent=`${idx+1} / ${SLIDES.length}`;
   document.getElementById('pbar').style.width=(((idx+1)/SLIDES.length)*100)+'%';
 }
-
 function doKatex(el){
-  if(window.renderMathInElement){
-    renderMathInElement(el,{delimiters:[
-      {left:'\\(',right:'\\)',display:false},
-      {left:'\\[',right:'\\]',display:true},
-      {left:'$$',right:'$$',display:true},
-      {left:'$',right:'$',display:false},
-    ],throwOnError:false});
-  }
+  if(window.renderMathInElement)renderMathInElement(el,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true},{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
 }
-
-function advance(){
-  const s=SLIDES[cur];
-  if(clicks<(s.clicks||0)){clicks++;if(s.onReveal)s.onReveal(clicks);return;}
-  if(cur<SLIDES.length-1){cur++;show(cur,1);}
-}
+function advance(){const s=SLIDES[cur];if(clicks<(s.clicks||0)){clicks++;if(s.onReveal)s.onReveal(clicks);return;}if(cur<SLIDES.length-1){cur++;show(cur,1);}}
 function retreat(){if(cur>0){cur--;show(cur,-1);}}
-
 document.addEventListener('keydown',e=>{
   if(e.code==='Space'||e.code==='ArrowRight'){e.preventDefault();advance();}
   if(e.code==='ArrowLeft'){e.preventDefault();retreat();}
+  if(e.code==='KeyF'){document.getElementById('fs-btn').click();}
 });
 document.getElementById('bn').addEventListener('click',advance);
 document.getElementById('bp').addEventListener('click',retreat);
-
 let tx=0;
 document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
 document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?advance():retreat();}});
-
-setTimeout(()=>{document.getElementById('hint').style.opacity='0';},4000);
+setTimeout(()=>{document.getElementById('hint').style.opacity='0';},5000);
 document.addEventListener('katex-ready',()=>{const a=deck.querySelector('.slide.active');if(a)doKatex(a);});
-
 show(0,1);
 </script>
 </body>
