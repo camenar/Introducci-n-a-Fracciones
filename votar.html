@@ -2,126 +2,472 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Votación - Fracciones</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Votación · Fracciones · Merceditas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',system-ui,sans-serif;background:linear-gradient(135deg,#0F2040 0%,#1C3A6E 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.container{background:#fff;border-radius:20px;padding:40px;max-width:600px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-h1{color:#0F2040;font-size:32px;margin-bottom:10px;text-align:center}
-.subtitle{color:#666;text-align:center;margin-bottom:30px;font-size:18px}
-.barra{margin:20px 0}
-.question{font-size:20px;color:#333;margin-bottom:15px;font-weight:600}
-.options{display:flex;flex-direction:column;gap:15px}
-.option{background:#f5f5f5;border:3px solid #ddd;border-radius:12px;padding:20px;cursor:pointer;transition:all 0.3s;font-size:24px;display:flex;align-items:center;gap:15px}
-.option:hover{background:#EEF5FB;border-color:#2E75B6;transform:translateY(-2px)}
-.option.selected{background:#0F2040;color:#fff;border-color:#0F2040}
-.indicator{width:30px;height:30px;border-radius:50%;border:3px solid currentColor;display:flex;align-items:center;justify-content:center}
-.option.selected .indicator{background:#fff}
-#status{margin-top:20px;padding:15px;border-radius:10px;text-align:center;font-size:18px;font-weight:600;display:none}
-#status.success{background:#d4edda;color:#155724;display:block}
-#status.error{background:#f8d7da;color:#721c24;display:block}
-.already{background:#fff3cd;color:#856404;padding:20px;border-radius:10px;text-align:center;margin-top:20px;font-size:18px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --navy:#0F2040;--blue:#1C3A6E;--blue-mid:#2E75B6;
+  --teal:#1A6B5A;--amber:#C47C1A;--red:#B83232;--purple:#6C3483;
+  --green:#27AE60;--cream:#F4F3EF;--warm:#EDECEA;--border:#C0BDB4;
+  --text:#0A0A0B;--text2:#2A2A2C;--text3:#4A4A4E;
+}
+html,body{
+  width:100%;min-height:100vh;
+  background:var(--cream);
+  font-family:'DM Sans',system-ui,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ── HEADER ── */
+.top-bar{
+  background:var(--navy);
+  padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;
+}
+.top-title{
+  font-size:15px;font-weight:700;color:#C8DDEF;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.top-status{
+  font-size:13px;font-weight:600;color:#C8DDEF;
+  display:flex;align-items:center;gap:6px;
+}
+.dot{
+  width:9px;height:9px;border-radius:50%;background:#27AE60;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── MAIN CONTENT ── */
+.main{padding:20px 18px 32px;max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+
+/* ── SITUATION BADGE ── */
+.sit-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;border-radius:30px;
+  font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;align-self:flex-start;
+}
+
+/* ── SITUATION CARD ── */
+.sit-card{
+  background:#fff;border-radius:16px;
+  border:2px solid var(--border);
+  border-top:6px solid var(--navy);
+  padding:22px 20px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.sit-num{
+  font-size:13px;font-weight:700;color:var(--text3);
+  text-transform:uppercase;letter-spacing:.1em;
+}
+.sit-text{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;color:var(--text);
+  line-height:1.5;font-style:italic;
+}
+.sit-question{
+  font-size:19px;font-weight:700;color:var(--navy);
+  line-height:1.35;
+  background:var(--cream);
+  border-radius:10px;
+  padding:12px 16px;
+  border-left:4px solid var(--navy);
+}
+
+/* ── OPTIONS ── */
+.options{display:flex;flex-direction:column;gap:12px}
+.opt-btn{
+  width:100%;padding:18px 20px;
+  background:#fff;border:2.5px solid var(--border);
+  border-radius:14px;
+  font-size:20px;font-weight:600;font-family:inherit;
+  color:var(--text);text-align:left;
+  cursor:pointer;
+  display:flex;align-items:center;gap:16px;
+  transition:all .2s;
+  -webkit-user-select:none;user-select:none;
+  position:relative;overflow:hidden;
+}
+.opt-btn:active{transform:scale(.97)}
+.opt-btn.selected{
+  border-color:var(--navy);
+  background:var(--navy);
+  color:#fff;
+}
+.opt-btn.correct{
+  border-color:var(--green);
+  background:#E8F5E9;
+  color:var(--text);
+}
+.opt-btn.wrong{
+  border-color:var(--border);
+  background:var(--cream);
+  color:var(--text3);
+  opacity:.7;
+}
+.opt-letter{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--cream);border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:18px;color:var(--navy);
+  flex-shrink:0;transition:all .2s;
+}
+.opt-btn.selected .opt-letter{background:#fff;border-color:#fff;color:var(--navy)}
+.opt-text{flex:1;line-height:1.3}
+
+/* ── VOTED STATE ── */
+.voted-box{
+  background:#E8F5F0;border:2.5px solid var(--teal);
+  border-radius:14px;padding:20px;
+  text-align:center;display:flex;flex-direction:column;gap:10px;
+}
+.voted-icon{font-size:48px;line-height:1}
+.voted-title{font-size:22px;font-weight:700;color:var(--teal)}
+.voted-sub{font-size:16px;color:var(--text3);line-height:1.4}
+
+/* ── WAITING STATE ── */
+.waiting-box{
+  background:#fff;border:2px solid var(--border);border-radius:16px;
+  padding:40px 24px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.wait-spinner{
+  width:52px;height:52px;border:4px solid var(--warm);
+  border-top-color:var(--navy);border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wait-title{font-size:20px;font-weight:700;color:var(--navy)}
+.wait-sub{font-size:16px;color:var(--text3);line-height:1.5}
+
+/* ── BETWEEN SITUATIONS ── */
+.between-box{
+  background:#fff;border:2px solid var(--border);border-top:5px solid var(--blue-mid);
+  border-radius:16px;padding:32px 24px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+}
+.between-icon{font-size:44px}
+.between-title{font-size:21px;font-weight:700;color:var(--blue-mid)}
+.between-sub{font-size:16px;color:var(--text3);line-height:1.5}
+.progress-dots{display:flex;gap:10px;justify-content:center;margin-top:4px}
+.pdot{width:14px;height:14px;border-radius:50%;background:var(--warm);border:2px solid var(--border);transition:all .3s}
+.pdot.done{background:var(--teal);border-color:var(--teal)}
+.pdot.active{background:var(--navy);border-color:var(--navy);transform:scale(1.3)}
+
+/* ── FOOTER ── */
+.page-footer{
+  text-align:center;padding:20px;
+  font-size:13px;color:var(--text3);
+}
+
+/* ── LEVEL COLORS ── */
+.lvl-1{background:var(--teal)}
+.lvl-2{background:var(--amber)}
+.lvl-3{background:var(--blue-mid)}
+.lvl-4{background:var(--purple)}
+.lvl-5{background:var(--red)}
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>🗳️ Votación en Vivo</h1>
-  <div class="subtitle">I.E. Merceditas Gómez Martínez - Fracciones</div>
-  
-  <div id="voting-form">
-    <div class="barra">
-      <svg viewBox="0 0 220 66" width="100%" height="66" xmlns="http://www.w3.org/2000/svg">
-        <rect x="3" y="3" width="41.2" height="60" rx="4" fill="#6C3483" stroke="#fff" stroke-width="2"/>
-        <rect x="47.2" y="3" width="41.2" height="60" rx="4" fill="#6C3483" stroke="#fff" stroke-width="2"/>
-        <rect x="91.4" y="3" width="41.2" height="60" rx="4" fill="#6C3483" stroke="#fff" stroke-width="2"/>
-        <rect x="135.6" y="3" width="41.2" height="60" rx="4" fill="#DEDBD3" stroke="#fff" stroke-width="2"/>
-        <rect x="179.8" y="3" width="41.2" height="60" rx="4" fill="#DEDBD3" stroke="#fff" stroke-width="2"/>
-      </svg>
-    </div>
-    
-    <div class="question">¿Qué fracción representa esta barra?</div>
-    
-    <div class="options">
-      <div class="option" onclick="vote('a')">
-        <div class="indicator"></div>
-        <span><strong>A)</strong> 3/5 — tres quintos</span>
-      </div>
-      <div class="option" onclick="vote('b')">
-        <div class="indicator"></div>
-        <span><strong>B)</strong> 5/3 — cinco tercios</span>
-      </div>
-      <div class="option" onclick="vote('c')">
-        <div class="indicator"></div>
-        <span><strong>C)</strong> 2/5 — dos quintos</span>
-      </div>
-    </div>
-  </div>
-  
-  <div id="status"></div>
-  
-  <div id="already-voted" style="display:none">
-    <div class="already">
-      ✅ <strong>¡Gracias por votar!</strong><br>
-      Ya registraste tu respuesta en esta sesión.
-    </div>
+
+<div class="top-bar">
+  <div class="top-title">🗳️ Fracciones · Sesión 1</div>
+  <div class="top-status">
+    <div class="dot"></div>
+    <span id="status-txt">Conectando…</span>
   </div>
 </div>
 
+<div class="main" id="main-content">
+  <!-- contenido dinámico -->
+  <div class="waiting-box" id="waiting-state">
+    <div class="wait-spinner"></div>
+    <div class="wait-title">Conectando con la clase…</div>
+    <div class="wait-sub">Espera a que el docente inicie la actividad de votación.</div>
+  </div>
+</div>
+
+<div class="page-footer">I.E. Merceditas Gómez Martínez · Grado 7°</div>
+
 <script>
-const FB_URL='https://fracciones-merceditas-default-rtdb.firebaseio.com';
-const SESSION_KEY='sesion1_'+new Date().toISOString().slice(0,10);
+/* ══════════════════════════════════════════════
+   CONFIGURACIÓN FIREBASE
+══════════════════════════════════════════════ */
+const FB_URL = 'https://fracciones-merceditas-default-rtdb.firebaseio.com';
+const TODAY  = new Date().toISOString().slice(0,10);
+const SIT_KEY = `sesion1_${TODAY}`;
 
-// Verificar si ya votó
-if(localStorage.getItem('voted_'+SESSION_KEY)){
-  document.getElementById('voting-form').style.display='none';
-  document.getElementById('already-voted').style.display='block';
-}
+/* ══════════════════════════════════════════════
+   DATOS DE LAS 5 SITUACIONES
+══════════════════════════════════════════════ */
+const SITUATIONS = {
+  1: {
+    level: 'Básico', lvlClass: 'lvl-1',
+    context: 'En la tienda escolar hay una bandeja dividida en 5 partes iguales. Las partes coloreadas están servidas.',
+    question: '¿Qué fracción de la bandeja está servida?',
+    options: {
+      a: 'A)  ²⁄₅  — dos quintos',
+      b: 'B)  ³⁄₅  — tres quintos',
+      c: 'C)  ⁵⁄₃  — cinco tercios'
+    },
+    correct: 'b'
+  },
+  2: {
+    level: 'Básico+', lvlClass: 'lvl-2',
+    context: 'El Metro Línea A tiene 10 estaciones entre Niquía e Itagüí. Luisa subió en Niquía y bajó después de recorrer 7 estaciones.',
+    question: '¿Qué fracción del recorrido total hizo Luisa?',
+    options: {
+      a: 'A)  ⁷⁄₁₀  — siete décimos',
+      b: 'B)  ³⁄₁₀  — tres décimos',
+      c: 'C)  ¹⁰⁄₇  — diez séptimos'
+    },
+    correct: 'a'
+  },
+  3: {
+    level: 'Medio', lvlClass: 'lvl-3',
+    context: 'Ana comió ¾ de su empanada. Luis comió ⁵⁄₈ de la suya. Las empanadas eran del mismo tamaño.',
+    question: '¿Quién comió más?',
+    options: {
+      a: 'A)  Ana comió más  ( ¾ > ⁵⁄₈ )',
+      b: 'B)  Luis comió más  ( ⁵⁄₈ > ¾ )',
+      c: 'C)  Comieron igual  ( ¾ = ⁵⁄₈ )'
+    },
+    correct: 'a'
+  },
+  4: {
+    level: 'Medio+', lvlClass: 'lvl-4',
+    context: 'Sebastián comió ½ de una barra de chocolate. Su amigo dice que eso es lo mismo que comer 4 partes de una barra dividida en partes iguales.',
+    question: '¿En cuántas partes está dividida la barra del amigo?',
+    options: {
+      a: 'A)  ⁴⁄₆  — cuatro sextos',
+      b: 'B)  ⁴⁄₈  — cuatro octavos',
+      c: 'C)  ⁴⁄₄  — cuatro cuartos'
+    },
+    correct: 'b'
+  },
+  5: {
+    level: 'Avanzado', lvlClass: 'lvl-5',
+    context: 'El Parque Explora tiene 8 salas. El grupo 7.2 visitó ³⁄₈ de las salas por la mañana y ²⁄₈ por la tarde.',
+    question: '¿Qué fracción de las salas les falta por visitar?',
+    options: {
+      a: 'A)  ⁵⁄₈  — cinco octavos',
+      b: 'B)  ³⁄₈  — tres octavos',
+      c: 'C)  ¹⁄₈  — un octavo'
+    },
+    correct: 'b'
+  }
+};
 
-async function vote(opt){
-  const status=document.getElementById('status');
-  
-  // Marcar como votado
-  localStorage.setItem('voted_'+SESSION_KEY,'1');
-  
-  // Actualizar UI
-  document.querySelectorAll('.option').forEach((el,idx)=>{
-    const letters=['a','b','c'];
-    if(letters[idx]===opt)el.classList.add('selected');
-    el.style.pointerEvents='none';
-  });
-  
-  // Enviar a Firebase
+/* ══════════════════════════════════════════════
+   ESTADO LOCAL
+══════════════════════════════════════════════ */
+let currentSit  = 0;   // situación activa (0 = esperando)
+let myVotes     = {};  // {1:'a', 2:'b', ...}
+let pollTimer   = null;
+
+/* ══════════════════════════════════════════════
+   FIREBASE HELPERS
+══════════════════════════════════════════════ */
+async function fbGet(path){
   try{
-    const res=await fetch(`${FB_URL}/votes/${SESSION_KEY}.json`);
-    let data=res.ok?await res.json():null;
-    if(!data)data={a:0,b:0,c:0};
-    
-    data[opt]=(data[opt]||0)+1;
-    
-    const patch=await fetch(`${FB_URL}/votes/${SESSION_KEY}.json`,{
+    const r = await fetch(`${FB_URL}${path}.json`);
+    return r.ok ? await r.json() : null;
+  }catch(e){ return null; }
+}
+async function fbSet(path, data){
+  try{
+    await fetch(`${FB_URL}${path}.json`, {
+      method:'PUT',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+  }catch(e){}
+}
+async function fbPatch(path, data){
+  try{
+    await fetch(`${FB_URL}${path}.json`, {
       method:'PATCH',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
+      body: JSON.stringify(data)
     });
-    
-    if(patch.ok){
-      status.className='success';
-      status.textContent='✅ ¡Voto registrado correctamente!';
-      setTimeout(()=>{
-        document.getElementById('voting-form').style.display='none';
-        document.getElementById('already-voted').style.display='block';
-        status.style.display='none';
-      },1500);
-    }else{
-      throw new Error('Error en servidor');
-    }
-  }catch(e){
-    status.className='error';
-    status.textContent='❌ Error al registrar. Intenta de nuevo.';
-    localStorage.removeItem('voted_'+SESSION_KEY);
-  }
+  }catch(e){}
 }
+
+/* ══════════════════════════════════════════════
+   REGISTRAR CONEXIÓN
+══════════════════════════════════════════════ */
+async function registerConnected(){
+  const deviceId = getDeviceId();
+  await fbPatch(`/connected/${SIT_KEY}`, { [deviceId]: Date.now() });
+}
+function getDeviceId(){
+  let id = localStorage.getItem('device_id');
+  if(!id){ id = 'dev_' + Math.random().toString(36).slice(2,10); localStorage.setItem('device_id', id); }
+  return id;
+}
+
+/* ══════════════════════════════════════════════
+   POLLING — detectar situación activa
+══════════════════════════════════════════════ */
+function startPolling(){
+  poll(); // inmediato
+  pollTimer = setInterval(poll, 2500);
+}
+async function poll(){
+  const data = await fbGet(`/current_situation/${SIT_KEY}`);
+  const newSit = data ? parseInt(data) : 0;
+  if(newSit !== currentSit){
+    currentSit = newSit;
+    render();
+  }
+  // Actualizar status
+  const statusEl = document.getElementById('status-txt');
+  if(statusEl) statusEl.textContent = currentSit > 0 ? `Situación ${currentSit} de 5` : 'En espera…';
+}
+
+/* ══════════════════════════════════════════════
+   VOTAR
+══════════════════════════════════════════════ */
+async function castVote(sit, opt){
+  if(myVotes[sit]) return; // ya votó
+  myVotes[sit] = opt;
+
+  // Guardar en Firebase
+  const cur = await fbGet(`/situations/${SIT_KEY}/sit${sit}`) || {a:0,b:0,c:0};
+  cur[opt] = (cur[opt]||0) + 1;
+  await fbPatch(`/situations/${SIT_KEY}/sit${sit}`, cur);
+
+  // Re-renderizar
+  render();
+}
+
+/* ══════════════════════════════════════════════
+   RENDER
+══════════════════════════════════════════════ */
+function render(){
+  const container = document.getElementById('main-content');
+  container.innerHTML = '';
+
+  // Estado: esperando que el docente inicie
+  if(currentSit === 0){
+    container.innerHTML = `
+      <div class="waiting-box">
+        <div class="wait-spinner"></div>
+        <div class="wait-title">Esperando al docente…</div>
+        <div class="wait-sub">Cuando el docente inicie la actividad, la pregunta aparecerá aquí automáticamente.</div>
+      </div>
+      <div class="progress-dots">
+        ${[1,2,3,4,5].map(n => `<div class="pdot"></div>`).join('')}
+      </div>`;
+    return;
+  }
+
+  // Estado: todas las situaciones completadas
+  if(currentSit > 5){
+    container.innerHTML = `
+      <div class="between-box">
+        <div class="between-icon">🏁</div>
+        <div class="between-title">¡Actividad completada!</div>
+        <div class="between-sub">El docente revelará las respuestas correctas en la pantalla.</div>
+        <div class="progress-dots">
+          ${[1,2,3,4,5].map(n => `<div class="pdot done"></div>`).join('')}
+        </div>
+      </div>`;
+    return;
+  }
+
+  const sit = SITUATIONS[currentSit];
+  const myVote = myVotes[currentSit];
+
+  // Badge de nivel
+  const badge = document.createElement('div');
+  badge.className = `sit-badge ${sit.lvlClass}`;
+  badge.textContent = `Situación ${currentSit} de 5 · ${sit.level}`;
+  container.appendChild(badge);
+
+  // Progreso
+  const dots = document.createElement('div');
+  dots.className = 'progress-dots';
+  dots.innerHTML = [1,2,3,4,5].map(n => {
+    let cls = 'pdot';
+    if(n < currentSit) cls += ' done';
+    if(n === currentSit) cls += ' active';
+    return `<div class="${cls}"></div>`;
+  }).join('');
+  container.appendChild(dots);
+
+  // Tarjeta de situación
+  const card = document.createElement('div');
+  card.className = 'sit-card';
+  card.style.borderTopColor = getColor(sit.lvlClass);
+  card.innerHTML = `
+    <div class="sit-num">📍 ${sit.level}</div>
+    <div class="sit-text">${sit.context}</div>
+    <div class="sit-question">${sit.question}</div>`;
+  container.appendChild(card);
+
+  // Ya votó
+  if(myVote){
+    const votedBox = document.createElement('div');
+    votedBox.className = 'voted-box';
+    votedBox.innerHTML = `
+      <div class="voted-icon">✅</div>
+      <div class="voted-title">¡Voto registrado!</div>
+      <div class="voted-sub">Elegiste la opción <strong>${myVote.toUpperCase()}</strong>.<br>Las respuestas correctas se revelan al final de las 5 situaciones.</div>`;
+    container.appendChild(votedBox);
+
+    // Mostrar opciones deshabilitadas
+    const opts = document.createElement('div');
+    opts.className = 'options';
+    ['a','b','c'].forEach(k => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn' + (k === myVote ? ' selected' : ' wrong');
+      btn.disabled = true;
+      btn.innerHTML = `
+        <div class="opt-letter">${k.toUpperCase()}</div>
+        <div class="opt-text">${sit.options[k]}</div>`;
+      opts.appendChild(btn);
+    });
+    container.appendChild(opts);
+    return;
+  }
+
+  // Opciones para votar
+  const opts = document.createElement('div');
+  opts.className = 'options';
+  ['a','b','c'].forEach(k => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `
+      <div class="opt-letter">${k.toUpperCase()}</div>
+      <div class="opt-text">${sit.options[k]}</div>`;
+    btn.addEventListener('click', () => castVote(currentSit, k));
+    opts.appendChild(btn);
+  });
+  container.appendChild(opts);
+}
+
+/* ══════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════ */
+function getColor(cls){
+  const map = {
+    'lvl-1':'#1A6B5A','lvl-2':'#C47C1A',
+    'lvl-3':'#2E75B6','lvl-4':'#6C3483','lvl-5':'#B83232'
+  };
+  return map[cls] || '#0F2040';
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+registerConnected();
+startPolling();
 </script>
 </body>
 </html>
