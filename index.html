@@ -710,7 +710,7 @@ onReveal:n=>{
 /* ── SLIDE 10: QR INTRO ── */
 {bread:'Sesión 1 › Aplicación · Votación en vivo › Preparación',time:'APLICACIÓN · 15 min',
 fL:'Votación en vivo — Conéctate antes de empezar',clicks:0,
-onEnter:()=>{ initQR('qr-canvas','https://bit.ly/frac-merceditas'); startConnectedPolling(); },
+onEnter:()=>{ initQR('qr-canvas','https://camenar.github.io/Introducci-n-a-Fracciones/votar.html'); startConnectedPolling(); setSitActive(0); },
 onLeave:()=>{ stopConnectedPolling(); },
 html:`
 <div class="title-row">
@@ -724,7 +724,7 @@ html:`
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;align-items:center">
   <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
     <canvas id="qr-canvas" style="border-radius:16px;border:3px solid var(--border);background:#fff;padding:16px"></canvas>
-    <div style="font-family:monospace;font-size:clamp(22px,2.4vw,30px);color:var(--navy);font-weight:700;background:var(--cream);padding:12px 28px;border-radius:10px;border:2px solid var(--border)">bit.ly/frac-merceditas</div>
+    <div style="font-family:monospace;font-size:clamp(16px,1.8vw,22px);color:var(--navy);font-weight:700;background:var(--cream);padding:12px 28px;border-radius:10px;border:2px solid var(--border)">camenar.github.io/Introducci-n-a-Fracciones/votar.html</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px">
     <div style="background:var(--cream);border:2px solid var(--border);border-top:5px solid var(--purple);border-radius:14px;padding:22px">
@@ -749,7 +749,7 @@ html:`
 
 {bread:'Sesión 1 › Votación › Situación 1 de 5',time:'SITUACIÓN 1 · BÁSICO',
 fL:'Identificar fracción desde una barra',clicks:0,
-onEnter:()=>{ initSitPoll(1); },
+onEnter:()=>{ initSitPoll(1); setSitActive(1); },
 onLeave:()=>{ stopSitPoll(); },
 html:`
 <div class="title-row">
@@ -796,7 +796,7 @@ html:`
 
 {bread:'Sesión 1 › Votación › Situación 2 de 5',time:'SITUACIÓN 2 · BÁSICO+',
 fL:'Fracción desde contexto real',clicks:0,
-onEnter:()=>{ initSitPoll(2); },
+onEnter:()=>{ initSitPoll(2); setSitActive(2); },
 onLeave:()=>{ stopSitPoll(); },
 html:`
 <div class="title-row">
@@ -843,7 +843,7 @@ html:`
 
 {bread:'Sesión 1 › Votación › Situación 3 de 5',time:'SITUACIÓN 3 · MEDIO',
 fL:'Comparar dos fracciones',clicks:0,
-onEnter:()=>{ initSitPoll(3); },
+onEnter:()=>{ initSitPoll(3); setSitActive(3); },
 onLeave:()=>{ stopSitPoll(); },
 html:`
 <div class="title-row">
@@ -893,7 +893,7 @@ html:`
 
 {bread:'Sesión 1 › Votación › Situación 4 de 5',time:'SITUACIÓN 4 · MEDIO+',
 fL:'Fracción equivalente',clicks:0,
-onEnter:()=>{ initSitPoll(4); },
+onEnter:()=>{ initSitPoll(4); setSitActive(4); },
 onLeave:()=>{ stopSitPoll(); },
 html:`
 <div class="title-row">
@@ -944,7 +944,7 @@ html:`
 
 {bread:'Sesión 1 › Votación › Situación 5 de 5',time:'SITUACIÓN 5 · AVANZADO',
 fL:'Problema contextual con razonamiento',clicks:0,
-onEnter:()=>{ initSitPoll(5); },
+onEnter:()=>{ initSitPoll(5); setSitActive(5); },
 onLeave:()=>{ stopSitPoll(); },
 html:`
 <div class="title-row">
@@ -995,6 +995,7 @@ html:`
 /* ── SLIDE 16: RESPUESTAS DE LAS 5 SITUACIONES ── */
 {bread:'Sesión 1 › Votación › Respuestas',time:'RESPUESTAS',
 fL:'Respuestas — Situaciones 1 a 5',clicks:5,
+onEnter:()=>{ setSitActive(6); },
 html:`
 <div class="title-row">
   <div class="accent" style="background:var(--teal)"></div>
@@ -1250,6 +1251,18 @@ function startConnectedPolling(){
   }, 2000);
 }
 function stopConnectedPolling(){ if(connectedInterval){clearInterval(connectedInterval);connectedInterval=null;} }
+
+
+/* ══ BROADCAST SITUACIÓN ACTIVA → celulares ══ */
+async function setSitActive(n){
+  try{
+    await fetch(`${FB_URL}/current_situation/${SESSION_KEY}.json`,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(n)
+    });
+  }catch(e){}
+}
 
 /* ══ PER-SITUATION VOTING ══ */
 const SIT_BASE = () => `${FB_URL}/situations/${SESSION_KEY}`;
