@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sesión 2 · Fracciones Equivalentes · I.E. Merceditas Gómez Martínez</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="document.dispatchEvent(new Event('katex-ready'))"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2040;--blue:#1C3A6E;--blue-mid:#2E75B6;
+  --teal:#1A6B5A;--amber:#C47C1A;--red:#B83232;--purple:#6C3483;
+  --cream:#F4F3EF;--warm:#EDECEA;--border:#C0BDB4;
+  --text:#0A0A0B;--text2:#2A2A2C;--text3:#4A4A4E;
+  --green-s:#27AE60;--amber-s:#E08C20;--red-s:#C0392B;
+  --fs-xs:clamp(14px,1.3vw,20px);--fs-sm:clamp(16px,1.6vw,24px);
+  --fs-md:clamp(20px,2.0vw,30px);--fs-lg:clamp(24px,2.5vw,36px);
+  --fs-xl:clamp(30px,3.2vw,46px);--fs-2xl:clamp(40px,4.5vw,64px);
+  --fs-3xl:clamp(56px,7vw,100px);--fs-hero:clamp(70px,10vw,140px);
+  --pad-h:clamp(20px,3vw,52px);--pad-v:clamp(14px,1.8vh,28px);
+  --gap:clamp(10px,1.4vh,18px);--hdr-h:clamp(46px,5.5vh,64px);
+  --ftr-h:clamp(36px,4vh,52px);--pan-w:clamp(160px,14vw,240px);
+  --accent-w:clamp(8px,0.7vw,14px);--radius:clamp(8px,0.8vw,16px);
+  --dot-sz:clamp(32px,3.2vw,46px);
+}
+@media(min-width:1800px){:root{
+  --fs-xs:22px;--fs-sm:26px;--fs-md:32px;--fs-lg:40px;
+  --fs-xl:50px;--fs-2xl:68px;--fs-3xl:110px;--fs-hero:150px;
+  --pad-h:56px;--pad-v:30px;--gap:20px;--hdr-h:68px;--ftr-h:54px;--pan-w:260px;
+}}
+@media(max-width:1200px){:root{
+  --fs-xs:14px;--fs-sm:17px;--fs-md:21px;--fs-lg:26px;
+  --fs-xl:32px;--fs-2xl:44px;--fs-3xl:64px;--fs-hero:88px;
+  --pad-h:24px;--pad-v:12px;--gap:10px;--hdr-h:48px;--ftr-h:38px;--pan-w:160px;
+}}
+html,body{width:100%;height:100%;overflow:hidden;background:#111;font-family:'DM Sans',system-ui,sans-serif}
+#deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;background:#fff}
+.slide.active{opacity:1;pointer-events:all}
+.slide.enter-r{animation:inR .35s cubic-bezier(.22,.68,0,1.15) forwards}
+.slide.enter-l{animation:inL .35s cubic-bezier(.22,.68,0,1.15) forwards}
+@keyframes inR{from{transform:translateX(4%);opacity:0}to{transform:none;opacity:1}}
+@keyframes inL{from{transform:translateX(-4%);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.hdr{background:var(--navy);height:var(--hdr-h);display:flex;align-items:center;padding:0 var(--pad-h);justify-content:space-between;flex-shrink:0}
+.hdr-b{font-size:var(--fs-sm);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#C8DDEF}
+.hdr-t{background:var(--blue-mid);color:#fff;font-size:var(--fs-sm);font-weight:800;padding:6px 18px;border-radius:5px;letter-spacing:.06em;text-transform:uppercase}
+.ftr{background:var(--warm);border-top:2px solid var(--border);height:var(--ftr-h);display:flex;align-items:center;padding:0 var(--pad-h);justify-content:space-between;flex-shrink:0}
+.ftr span{font-size:var(--fs-sm);color:var(--text3);font-weight:600}
+.body{flex:1;overflow:hidden;padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:var(--gap)}
+/* Slide 2 — full width: sin padding lateral ni top en .body */
+.s-gancho .body{padding:0;gap:0}
+.slide-title{font-family:'DM Serif Display',serif;font-size:var(--fs-2xl);color:var(--navy);line-height:1.1}
+.slide-instr{font-size:var(--fs-md);color:var(--text2);font-style:italic;margin-top:4px;line-height:1.4}
+.title-row{display:flex;align-items:flex-start;gap:var(--gap)}
+.accent{width:var(--accent-w);border-radius:5px;flex-shrink:0;align-self:stretch;min-height:44px}
+.mbadge{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:var(--fs-sm);font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border-radius:6px;margin-bottom:4px}
+.click-hint{font-size:var(--fs-md);color:var(--text3);text-align:center;font-style:italic;padding:3px}
+.s-portada{background:var(--navy);align-items:center;justify-content:center}
+.p-inner{display:flex;flex-direction:column;align-items:center;gap:var(--gap);text-align:center;padding:var(--pad-v) var(--pad-h);width:100%}
+.p-badge{font-size:var(--fs-md);letter-spacing:.1em;text-transform:uppercase;color:#C8DDEF;font-weight:600}
+.p-title{font-family:'DM Serif Display',serif;font-size:var(--fs-hero);color:#fff;line-height:1.05;animation:fadeUp .8s .1s both}
+.p-title em{color:var(--amber);font-style:normal}
+.p-sub{font-size:var(--fs-lg);color:#C8DDEF;animation:fadeUp .8s .3s both}
+.p-sessions{display:flex;gap:var(--gap);margin-top:6px;animation:fadeUp .8s .5s both;justify-content:center}
+.psess{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);border-top:5px solid var(--amber);border-radius:var(--radius);padding:20px 28px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:180px}
+.psess-n{width:var(--dot-sz);height:var(--dot-sz);border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:var(--fs-md)}
+.psess-t{font-size:var(--fs-md);font-weight:700;color:#fff;text-align:center;line-height:1.3}
+.psess-s{font-size:var(--fs-sm);color:#C8DDEF;font-style:italic;text-align:center}
+.click-hint-portada{font-size:var(--fs-sm);color:rgba(200,221,239,.6);animation:pulse 2s infinite;margin-top:6px}
+.s-sesion{flex-direction:row}
+.pan{width:var(--pan-w);flex-shrink:0;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.pan-n{font-family:'DM Serif Display',serif;font-size:var(--fs-hero);line-height:1;color:#fff}
+.pan-l{font-size:var(--fs-md);font-weight:700;letter-spacing:.2em;color:#C8DDEF;text-transform:uppercase}
+.sess-content{flex:1;padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:var(--gap);overflow:hidden}
+.sess-title{font-family:'DM Serif Display',serif;font-size:var(--fs-2xl);color:var(--navy);line-height:1.1}
+.divider{height:2px;background:var(--border);border-radius:1px;flex-shrink:0}
+.obj-list{display:flex;flex-direction:column;gap:var(--gap);flex:1}
+.obj-item{display:flex;align-items:flex-start;gap:14px;background:var(--cream);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);border-left:6px solid var(--blue-mid);font-size:var(--fs-lg);color:var(--text);line-height:1.35;flex:1}
+.obj-dot{width:var(--dot-sz);height:var(--dot-sz);border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:var(--fs-md);font-weight:700;color:#fff;flex-shrink:0;margin-top:2px}
+.tiempo{background:var(--navy);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);font-size:var(--fs-md);font-weight:600;color:#fff;text-align:center;flex-shrink:0}
+.det-box{background:#FFF7ED;border:3px solid var(--amber);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);flex:1;display:flex;flex-direction:column;gap:var(--gap)}
+.det-label{font-size:var(--fs-sm);font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);flex-shrink:0}
+.det-text{font-family:'DM Serif Display',serif;font-size:var(--fs-xl);color:var(--text);line-height:1.5;font-style:italic;flex:1}
+.det-chips{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.det-chip{background:var(--amber);color:#fff;font-size:var(--fs-md);font-weight:700;padding:7px 18px;border-radius:20px}
+.pregunta-box{background:var(--navy);color:#fff;border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);font-size:var(--fs-lg);font-style:italic;line-height:1.5;flex-shrink:0}
+.yo-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);flex:1}
+.yo-panel-dark{background:var(--navy);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:var(--gap);flex:1}
+.yo-panel-dark .yo-pt{font-size:var(--fs-sm);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C8DDEF}
+.yo-step{background:rgba(255,255,255,.1);border-radius:calc(var(--radius) - 2px);padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:5px;flex:1}
+.yo-step-num{font-size:var(--fs-xs);font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.08em}
+.yo-step-text{font-size:var(--fs-md);color:#fff;line-height:1.4}
+.yo-step-formula{font-family:'DM Serif Display',serif;font-size:var(--fs-lg);color:var(--amber);text-align:center;margin-top:4px}
+.yo-side{background:#fff;border-radius:var(--radius);border:2px solid var(--border);padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--gap)}
+.yo-side-title{font-size:var(--fs-md);font-weight:700;color:var(--navy);text-align:center}
+.frac-visual{display:flex;align-items:flex-start;gap:clamp(12px,2vw,28px);justify-content:center;flex-wrap:wrap}
+.frac-col{text-align:center}
+.frac-cell{border:2px solid var(--navy);border-radius:3px;display:inline-block}
+.frac-cell.f1{background:var(--navy)}.frac-cell.f2{background:var(--teal)}.frac-cell.f3{background:var(--amber)}
+.frac-row{display:flex;gap:3px}
+.frac-lbl{font-family:'DM Serif Display',serif;font-size:var(--fs-lg);margin-top:8px;color:var(--text)}
+.eq-sign{font-size:var(--fs-xl);color:var(--text);align-self:center;font-weight:700}
+.rv{background:var(--cream);border:2px solid var(--border);border-left:6px solid var(--navy);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.22,.68,0,1.2),transform .5s cubic-bezier(.22,.68,0,1.2)}
+.rv.vis{opacity:1;transform:none}
+.rv-t{font-size:var(--fs-sm);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
+.rv-body{font-size:var(--fs-md);color:var(--text);line-height:1.5}
+.fml{background:#fff;border-radius:calc(var(--radius) - 2px);padding:clamp(8px,1.2vh,18px);text-align:center;border:2px solid var(--border)}
+.fml .katex{font-size:clamp(1.8em,3.5vw,3.8em)!important;color:var(--navy)!important}
+.conj{background:#FFF7ED;border:2.5px solid var(--amber);border-radius:calc(var(--radius) - 2px);padding:var(--pad-v) var(--pad-h);font-size:var(--fs-md);color:var(--text);line-height:1.5;font-style:italic}
+.hac-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);flex:1}
+.hac-card{background:#fff;border-radius:var(--radius);border:2px solid var(--border);border-top:5px solid transparent;padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(12px);transition:opacity .45s,transform .45s}
+.hac-card.vis{opacity:1;transform:none}
+.hac-head{display:flex;align-items:center;gap:10px}
+.hac-n{width:var(--dot-sz);height:var(--dot-sz);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:var(--fs-md);color:#fff;flex-shrink:0}
+.hac-title{font-size:var(--fs-lg);font-weight:700;color:var(--text)}
+.hac-ctx{font-size:var(--fs-md);color:var(--text2);font-style:italic;line-height:1.4}
+.hac-task{background:var(--cream);border-radius:6px;padding:8px 12px;font-size:var(--fs-md);color:var(--navy);font-style:italic;font-weight:600;border-left:4px solid var(--blue-mid)}
+.hac-answer{border-radius:6px;padding:9px 12px;font-size:var(--fs-md);font-weight:700;opacity:0;transition:opacity .4s}
+.latex-inline{background:var(--warm);border-radius:6px;padding:5px 10px;text-align:center;border:1px solid var(--border);font-size:var(--fs-lg);font-family:'DM Serif Display',serif}
+.s-trans{background:var(--navy);align-items:center;justify-content:center}
+.trans-big{font-family:'DM Serif Display',serif;font-size:var(--fs-3xl);color:#fff;line-height:1;animation:fadeUp .6s both}
+.trans-sub{font-size:var(--fs-xl);color:#C8DDEF;animation:fadeUp .6s .2s both}
+.trans-note{font-size:var(--fs-lg);color:rgba(200,221,239,.65);font-style:italic;animation:fadeUp .6s .4s both}
+.metodo-btn{background:#fff;border:2.5px solid var(--border);border-radius:var(--radius);padding:10px 18px;font-size:var(--fs-md);font-family:'DM Sans',sans-serif;font-weight:700;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .2s,border-color .2s,color .2s}
+.metodo-btn:hover{background:var(--cream);border-color:var(--navy);color:var(--navy)}
+.metodo-btn.activo-cruz{background:var(--navy);border-color:var(--navy);color:#fff}
+.metodo-btn.activo-simpl{background:var(--teal);border-color:var(--teal);color:#fff}
+.metodo-btn.activo-div{background:var(--amber);border-color:var(--amber);color:#fff}
+.paso-card{background:#fff;border:2px solid var(--border);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);animation:fadeIn .3s ease;display:none}
+.paso-card.paso-result{border-color:var(--green-s);background:#F0FFF4}
+.paso-num{font-size:var(--fs-xs);font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+.paso-text{font-size:var(--fs-md);color:var(--text);line-height:1.45;margin-bottom:6px}
+.paso-formula{font-family:'DM Serif Display',serif;font-size:var(--fs-xl);text-align:center;color:var(--text);background:var(--warm);border-radius:8px;padding:8px 14px}
+.ggb-nota{background:#E8F5F0;border:2.5px solid var(--teal);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);font-size:var(--fs-md);color:var(--text);line-height:1.5;flex-shrink:0}
+.meta-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--gap);flex:1}
+.meta-l{display:flex;flex-direction:column;gap:var(--gap)}
+.meta-qbox{background:#E8F5F0;border:3px solid var(--teal);border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:8px}
+.meta-qlbl{font-size:var(--fs-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.meta-qtxt{font-family:'DM Serif Display',serif;font-size:var(--fs-lg);color:var(--text);font-style:italic;line-height:1.5}
+.cuad-t{font-size:var(--fs-md);font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
+.cuad-items{display:flex;flex-direction:column;gap:var(--gap)}
+.cuad-item{display:flex;align-items:flex-start;gap:10px;background:#fff;border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);border-left:5px solid var(--teal);font-size:var(--fs-md);color:var(--text);line-height:1.4}
+.cuad-n{font-weight:700;color:var(--teal);flex-shrink:0;min-width:24px;font-size:var(--fs-md)}
+.meta-r{display:flex;flex-direction:column;gap:var(--gap)}
+.sema-t{font-size:var(--fs-md);font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em}
+.sema-items{display:flex;flex-direction:column;gap:var(--gap)}
+.sema-item{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);border:2px solid var(--border);opacity:0;transform:translateX(14px);transition:opacity .5s,transform .5s}
+.sema-item.vis{opacity:1;transform:none}
+.sema-c{width:clamp(40px,4.5vw,62px);height:clamp(40px,4.5vw,62px);border-radius:50%;flex-shrink:0;border:3px solid rgba(0,0,0,.1)}
+.sema-txt{font-size:var(--fs-md);color:var(--text);line-height:1.3}
+.sema-txt strong{display:block;font-size:var(--fs-sm);color:var(--text3);margin-top:2px}
+.piar-note{background:#F3E5F5;border:2px solid var(--purple);border-radius:var(--radius);padding:10px 16px;font-size:var(--fs-sm);color:var(--purple);margin-top:8px;line-height:1.5}
+.piar-note strong{display:block;margin-bottom:3px;font-size:var(--fs-sm);letter-spacing:.06em;text-transform:uppercase}
+.parts-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--gap);margin-top:6px}
+.pt{border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);display:flex;flex-direction:column;gap:5px}
+.pt-n{font-size:var(--fs-sm);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.pt-d{font-size:var(--fs-sm);line-height:1.4}
+#nav{position:fixed;bottom:clamp(12px,2vh,24px);right:clamp(16px,2vw,32px);display:flex;align-items:center;gap:10px;z-index:100}
+.nbtn{width:clamp(44px,4.5vw,60px);height:clamp(44px,4.5vw,60px);border-radius:50%;background:rgba(15,32,64,.88);border:1.5px solid rgba(255,255,255,.18);color:#fff;cursor:pointer;font-size:clamp(18px,2vw,26px);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.nbtn:hover{background:var(--blue-mid)}
+#ncnt{font-size:clamp(16px,1.6vw,22px);color:rgba(255,255,255,.88);background:rgba(15,32,64,.75);padding:6px 18px;border-radius:20px;font-family:monospace;font-weight:600}
+#pbar{position:fixed;bottom:0;left:0;height:5px;background:var(--blue-mid);transition:width .35s ease;z-index:100}
+#fs-btn{position:fixed;top:10px;right:clamp(56px,6vw,80px);z-index:200;background:rgba(15,32,64,.7);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-size:16px;width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#fs-btn:hover{background:var(--blue-mid)}
+#hint{position:fixed;bottom:clamp(12px,2vh,24px);left:clamp(16px,2vw,32px);font-size:13px;color:rgba(255,255,255,.5);background:rgba(15,32,64,.65);padding:5px 14px;border-radius:20px;font-family:monospace;transition:opacity .3s}
+.katex{font-size:1em!important}
+.fml .katex{font-size:clamp(1.8em,3.2vw,3.8em)!important;color:var(--navy)!important}
+.latex-inline .katex{font-size:clamp(1.4em,2vw,2.2em)!important}
+</style>
+</head>
+<body>
+<div id="deck"></div>
+<button id="fs-btn" title="Pantalla completa (F)">⛶</button>
+<div id="nav">
+  <button class="nbtn" id="bp">&#8592;</button>
+  <span id="ncnt">1 / 10</span>
+  <button class="nbtn" id="bn">&#8594;</button>
+</div>
+<div id="pbar"></div>
+<div id="hint">Espacio / → avanzar &nbsp;·&nbsp; ← retroceder &nbsp;·&nbsp; F pantalla completa</div>
+<script>
+const SLIDES=[
+
+{cls:'s-portada',noH:true,noF:true,clicks:0,html:`
+<div class="p-inner">
+  <div class="p-badge">I.E. Merceditas Gómez Martínez · Matemáticas · Grado 7° · Período 2</div>
+  <div class="p-title">Fracciones <em>Equivalentes</em><br>y Simplificación</div>
+  <div class="p-sub">Semana 1 — Período 2 · Sesión 2 de 3</div>
+  <div class="p-sessions"><div class="psess"><div class="psess-n">2</div><div class="psess-t">Fracciones equivalentes</div><div class="psess-s">¿Iguales pero distintas?</div></div></div>
+  <div class="click-hint-portada">▶ Haz clic o presiona Espacio para comenzar</div>
+</div>`},
+
+{cls:'s-sesion',noH:true,clicks:0,fL:'Fracciones Equivalentes · Sesión 2',html:`
+<div class="pan"><div class="pan-n">2</div><div class="pan-l">Sesión</div></div>
+<div class="sess-content">
+  <div class="sess-title">¿Iguales pero con<br>distinto nombre?</div>
+  <div class="divider"></div>
+  <div style="font-size:clamp(18px,2vw,24px);color:var(--text3);font-style:italic">Exploración → Construcción → Formalización → Aplicación → Metacognición</div>
+  <div class="obj-list">
+    <div class="obj-item"><div class="obj-dot">1</div>Construir el concepto de fracción equivalente desde representaciones gráficas con papel.</div>
+    <div class="obj-item"><div class="obj-dot">2</div>Identificar y aplicar los procedimientos de amplificación y simplificación.</div>
+    <div class="obj-item"><div class="obj-dot">3</div>Verificar equivalencia usando MCD, amplificación o producto cruzado.</div>
+  </div>
+  <div class="tiempo">⏱ 55 minutos &nbsp;·&nbsp; Yo hago → Hacemos → Tú haces &nbsp;·&nbsp; DUA activo</div>
+</div>`},
+
+/* ── SLIDE 2 GANCHO — full width ── */
+{bread:'Sesión 2 › Exploración (10 min) › Situación detonante',time:'EXPLORACIÓN · 10 min',
+fL:'Exploración — Conflicto cognitivo inicial',clicks:3,cls:'s-gancho',html:`
+<div style="display:flex;align-items:flex-start;gap:var(--gap);flex-shrink:0;padding:var(--pad-v) var(--pad-h) 0">
+  <div style="width:var(--accent-w);border-radius:6px;background:var(--amber);align-self:stretch;min-height:44px;flex-shrink:0"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--amber)">🔍 Exploración</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:var(--fs-2xl);color:var(--navy);line-height:1.1;margin-top:6px">¿Cómo pagan dos amigos la misma empanada?</div>
+    <div style="font-size:var(--fs-md);color:var(--text3);font-style:italic;margin-top:4px">Lee la situación y escribe tu respuesta antes de continuar.</div>
+  </div>
+</div>
+<div style="background:#FFF7ED;border:3px solid var(--amber);border-left:none;border-right:none;border-radius:0;padding:var(--pad-v) var(--pad-h);flex:1;display:flex;flex-direction:column;gap:var(--gap);min-height:0;margin-top:var(--gap)">
+  <div style="font-size:var(--fs-xs);font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);flex-shrink:0">Situación real · Medellín, Antioquia</div>
+  <div id="g2-texto" style="font-family:'DM Serif Display',serif;font-size:var(--fs-xl);color:var(--text);line-height:1.5;font-style:italic;flex:1;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.22,.68,0,1.2),transform .5s cubic-bezier(.22,.68,0,1.2)">"Valentina y Sebastián compran la misma empanada de pipián en la tienda escolar. Cuesta $1.200. Valentina paga con un billete de $2.400 y dice que pagó <strong style="color:var(--navy)">1/2</strong> del billete. Sebastián paga con $4.800 y dice que pagó <strong style="color:var(--teal)">2/4</strong>. El cajero dice que ambos pagaron lo mismo."</div>
+  <div id="g2-chips" style="display:flex;gap:var(--gap);flex-wrap:wrap;flex-shrink:0;opacity:0;transform:translateY(14px);transition:opacity .5s .1s cubic-bezier(.22,.68,0,1.2),transform .5s .1s cubic-bezier(.22,.68,0,1.2)">
+    <span style="background:var(--amber);color:#fff;font-size:var(--fs-md);font-weight:700;padding:8px 20px;border-radius:24px">Precio: $1.200</span>
+    <span style="background:var(--navy);color:#fff;font-size:var(--fs-md);font-weight:700;padding:8px 20px;border-radius:24px">Valentina: $2.400 → <strong>1/2</strong></span>
+    <span style="background:var(--teal);color:#fff;font-size:var(--fs-md);font-weight:700;padding:8px 20px;border-radius:24px">Sebastián: $4.800 → <strong>2/4</strong></span>
+  </div>
+  <div id="g2-pregunta" style="background:var(--navy);color:#fff;border-radius:var(--radius);padding:var(--pad-v) var(--pad-h);font-size:var(--fs-lg);font-style:italic;line-height:1.5;flex-shrink:0;opacity:0;transform:translateY(14px);transition:opacity .5s .1s cubic-bezier(.22,.68,0,1.2),transform .5s .1s cubic-bezier(.22,.68,0,1.2)">💬 ¿Cómo puede ser que <strong>1/2</strong> y <strong>2/4</strong> sean lo mismo si tienen números diferentes?<br><span style="font-size:var(--fs-md);color:#C8DDEF">Escribe tu conjetura con un dibujo en el cuaderno.</span></div>
+</div>`,
+onReveal:n=>{
+  const show=id=>{const el=document.getElementById(id);if(el){el.style.opacity='1';el.style.transform='none';}};
+  if(n===1)show('g2-texto');
+  if(n===2)show('g2-chips');
+  if(n===3)show('g2-pregunta');
+}},
+
+{bread:'Sesión 2 › Construcción (15 min) › Yo hago — Tiras de papel',time:'YO HAGO · 15 min',
+fL:'Yo hago — Representación con papel',clicks:4,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--navy)"></div>
+  <div style="flex:1">
+    <div class="mbadge">📖 Yo hago</div>
+    <div class="slide-title">Misma cantidad, distinto nombre</div>
+    <div class="slide-instr">Toma una tira de papel. Dóblala primero en 2, luego en 4 partes iguales. Sombrea la mitad en cada caso.</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1">
+  <div class="yo-panel-dark">
+    <div class="yo-pt">¿Qué observamos?</div>
+    <div id="ys1" class="yo-step" style="opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.22,.68,0,1.2),transform .5s cubic-bezier(.22,.68,0,1.2)">
+      <div class="yo-step-num">Doblez 1</div>
+      <div class="yo-step-text">Dobla la tira en 2 partes iguales. Sombrea 1 parte.</div>
+      <div class="yo-step-formula">1/2 de la tira</div>
+    </div>
+    <div id="ys2" class="yo-step" style="opacity:0;transform:translateY(14px);transition:opacity .5s .1s cubic-bezier(.22,.68,0,1.2),transform .5s .1s cubic-bezier(.22,.68,0,1.2)">
+      <div class="yo-step-num">Doblez 2</div>
+      <div class="yo-step-text">Dobla la misma tira en 4 partes iguales. Sombrea 2 partes.</div>
+      <div class="yo-step-formula">2/4 de la tira</div>
+    </div>
+    <div id="ys3" class="yo-step" style="opacity:0;transform:translateY(14px);transition:opacity .5s .1s cubic-bezier(.22,.68,0,1.2),transform .5s .1s cubic-bezier(.22,.68,0,1.2)">
+      <div class="yo-step-num">Conclusión</div>
+      <div class="yo-step-text">La región sombreada ocupa el mismo espacio → las fracciones son <strong>equivalentes</strong>.</div>
+      <div id="ys3-form" class="yo-step-formula" style="transition:color .4s,font-size .4s">1/2 = 2/4</div>
+    </div>
+  </div>
+  <div class="yo-side">
+    <div class="yo-side-title">Representación visual</div>
+    <div class="frac-visual">
+      <div id="fv1" class="frac-col" style="opacity:0;transform:translateY(10px);transition:opacity .5s cubic-bezier(.22,.68,0,1.2),transform .5s cubic-bezier(.22,.68,0,1.2)">
+        <div class="frac-row"><div class="frac-cell f1" style="width:140px;height:64px;border-radius:6px"></div><div class="frac-cell" style="width:140px;height:64px;border-radius:6px"></div></div>
+        <div class="frac-lbl">1/2</div>
+      </div>
+      <div id="eq1" class="eq-sign" style="opacity:0;transition:opacity .5s .1s">=</div>
+      <div id="fv2" class="frac-col" style="opacity:0;transform:translateY(10px);transition:opacity .5s .1s cubic-bezier(.22,.68,0,1.2),transform .5s .1s cubic-bezier(.22,.68,0,1.2)">
+        <div class="frac-row"><div class="frac-cell f2" style="width:68px;height:64px;border-radius:6px"></div><div class="frac-cell f2" style="width:68px;height:64px;border-radius:6px"></div><div class="frac-cell" style="width:68px;height:64px;border-radius:6px"></div><div class="frac-cell" style="width:68px;height:64px;border-radius:6px"></div></div>
+        <div class="frac-lbl">2/4</div>
+      </div>
+      <div id="eq2" class="eq-sign" style="opacity:0;transition:opacity .5s .1s">=</div>
+      <div id="fv3" class="frac-col" style="opacity:0;transform:translateY(10px);transition:opacity .5s .15s cubic-bezier(.22,.68,0,1.2),transform .5s .15s cubic-bezier(.22,.68,0,1.2)">
+        <div class="frac-row"><div class="frac-cell f3" style="width:46px;height:64px;border-radius:6px"></div><div class="frac-cell f3" style="width:46px;height:64px;border-radius:6px"></div><div class="frac-cell f3" style="width:46px;height:64px;border-radius:6px"></div><div class="frac-cell" style="width:46px;height:64px;border-radius:6px"></div><div class="frac-cell" style="width:46px;height:64px;border-radius:6px"></div><div class="frac-cell" style="width:46px;height:64px;border-radius:6px"></div></div>
+        <div class="frac-lbl">3/6</div>
+      </div>
+    </div>
+    <div id="fv-note" style="font-size:var(--fs-md);color:var(--text3);font-style:italic;text-align:center;opacity:0;transition:opacity .5s .2s">Todas representan la misma parte del todo</div>
+  </div>
+</div>`,
+onReveal:n=>{
+  const vis=(id,extra)=>{const el=document.getElementById(id);if(!el)return;el.style.opacity='1';el.style.transform='none';if(extra)extra(el);};
+  if(n===1){vis('ys1');vis('fv1');}
+  if(n===2){vis('ys2');vis('fv2');vis('eq1');}
+  if(n===3){vis('ys3');vis('fv3');vis('eq2');}
+  if(n===4){vis('ys3-form',el=>{el.style.color='#FFD700';el.style.fontSize='var(--fs-xl)';});vis('fv-note');}
+}},
+
+{bread:'Sesión 2 › Formalización (10 min) › PPT animado',time:'FORMALIZACIÓN · 10 min',
+fL:'Formalización — Conjetura → PPT revela',clicks:4,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--blue-mid)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--blue-mid)">✏️ Formalización</div>
+    <div class="slide-title">Escribe tu conjetura <em style="color:var(--blue-mid)">antes</em> del clic</div>
+    <div class="slide-instr">«Para pasar de 1/2 a 2/4 multipliqué ___ y ___. Eso se llama ___» — el PPT revela.</div>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1">
+  <div class="rv" id="fc1" style="border-left-color:var(--navy)"><div class="rv-t">① Amplificación</div><div class="fml">\\( \\dfrac{a}{b} = \\dfrac{a \\cdot n}{b \\cdot n} \\quad n \\neq 0 \\)</div><div class="rv-body">Multiplicar numerador y denominador por el mismo número ≠ 0.<br><em style="color:var(--text3)">Ejemplo: 1/2 × (2/2) = 2/4</em></div></div>
+  <div class="rv" id="fc2" style="border-left-color:var(--teal)"><div class="rv-t">② Simplificación</div><div class="fml">\\( \\dfrac{a}{b} = \\dfrac{a \\div n}{b \\div n} \\quad n = \\text{MCD}(a,b) \\)</div><div class="rv-body">Dividir numerador y denominador entre su MCD.<br><em style="color:var(--text3)">Ejemplo: 6/8 → MCD=2 → 3/4</em></div></div>
+  <div class="rv" id="fc3" style="border-left-color:var(--amber)"><div class="rv-t">③ Fracción irreducible</div><div class="fml">\\( \\text{MCD}(a,b) = 1 \\Rightarrow \\dfrac{a}{b} \\text{ es irreducible} \\)</div><div class="rv-body">No se puede simplificar más.<br><em style="color:var(--text3)">Ejemplo: 3/4 — MCD(3,4)=1 ✓</em></div></div>
+  <div class="rv" id="fc4" style="border-left-color:var(--red)"><div class="rv-t">④ Verificar equivalencia</div><div class="fml">\\( \\dfrac{a}{b} = \\dfrac{c}{d} \\iff a \\cdot d = b \\cdot c \\)</div><div class="rv-body">Producto cruzado: si son iguales, las fracciones son equivalentes.<br><em style="color:var(--text3)">1/2 y 3/6: 1×6=6, 2×3=6 ✓</em></div></div>
+</div>
+<div style="text-align:center;font-size:19px;color:var(--text3);font-style:italic;margin-top:4px">🖊 Contrasta cada propiedad con tu conjetura en color diferente.</div>`,
+onReveal:n=>{const ids=['fc1','fc2','fc3','fc4'];document.getElementById(ids[n-1]).classList.add('vis');}},
+
+{bread:'Sesión 2 › Hacemos (15 min) › Práctica en tríos',time:'HACEMOS · 15 min',
+fL:'Hacemos — Práctica guiada en tríos',clicks:8,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)">🤝 Hacemos</div>
+    <div class="slide-title">Trabajamos juntos — Contexto Medellín</div>
+    <div class="slide-instr">Trabaja en tríos. Usa el método que prefieran.</div>
+  </div>
+</div>
+<div class="hac-grid">
+  <div class="hac-card" style="border-top-color:var(--navy)" id="hc1"><div class="hac-head"><div class="hac-n" style="background:var(--navy)">A</div><div class="hac-title">Metro — Línea A</div></div><div class="hac-ctx">12 de cada 16 sillas del vagón están ocupadas.</div><div class="hac-task">Simplifica: ¿qué fracción irreducible representa las sillas ocupadas?</div><div class="latex-inline">12/16 → ?</div><div class="hac-answer" id="ha1" style="background:#EEF5FB;color:var(--blue)">✓ MCD(12,16)=4 → <strong>3/4</strong></div></div>
+  <div class="hac-card" style="border-top-color:var(--teal)" id="hc2"><div class="hac-head"><div class="hac-n" style="background:var(--teal)">B</div><div class="hac-title">Pandebono — Laureles</div></div><div class="hac-ctx">Una receta pide 2/3 de taza de maíz. Escríbela con denominador 12.</div><div class="hac-task">Amplifica multiplicando numerador y denominador.</div><div class="latex-inline">2/3 = ?/12</div><div class="hac-answer" id="ha2" style="background:#E8F5F0;color:var(--teal)">✓ ×4/×4 → <strong>8/12</strong></div></div>
+  <div class="hac-card" style="border-top-color:var(--amber)" id="hc3"><div class="hac-head"><div class="hac-n" style="background:var(--amber)">C</div><div class="hac-title">Parque Explora</div></div><div class="hac-ctx">5 de 8 módulos habilitados. En el Jardín Botánico: 15 de 24.</div><div class="hac-task">¿Son equivalentes? Usa el producto cruzado.</div><div class="latex-inline">5/8 ≟ 15/24</div><div class="hac-answer" id="ha3" style="background:#FFF7ED;color:var(--amber)">✓ 5×24=120, 8×15=120 → <strong>Sí ✓</strong></div></div>
+  <div class="hac-card" style="border-top-color:var(--red)" id="hc4"><div class="hac-head"><div class="hac-n" style="background:var(--red)">D</div><div class="hac-title">Galería Minorista</div></div><div class="hac-ctx">3/5 del lote de aguacates ya se vendió. Exprésalo con denominador 20.</div><div class="hac-task">Amplifica y verifica con producto cruzado.</div><div class="latex-inline">3/5 = ?/20</div><div class="hac-answer" id="ha4" style="background:#FFEBEE;color:var(--red)">✓ ×4/×4 → <strong>12/20</strong></div></div>
+</div>`,
+onReveal:n=>{
+  const cards=['hc1','hc2','hc3','hc4'],ans=['ha1','ha2','ha3','ha4'];
+  if(n<=4)document.getElementById(cards[n-1]).classList.add('vis');
+  else document.getElementById(ans[n-5]).style.opacity='1';
+}},
+
+{bread:'Sesión 2 › Aplicación › Tres métodos — Ejemplo guiado',time:'APLICACIÓN · 8 min',
+fL:'Tres métodos para verificar equivalencia',clicks:0,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)">🔬 Los tres métodos</div>
+    <div class="slide-title">¿Son equivalentes 6/9 y 10/15?</div>
+    <div class="slide-instr">Elige un método y sigue los pasos.</div>
+  </div>
+</div>
+<div id="metodo-btns" style="display:flex;gap:14px;margin:6px 0 10px;flex-wrap:wrap">
+  <button class="metodo-btn" id="btn-cruz" onclick="selectMetodo('cruz')">✕ Multiplicación en cruz</button>
+  <button class="metodo-btn" id="btn-simpl" onclick="selectMetodo('simpl')">÷ Simplificación (MCD)</button>
+  <button class="metodo-btn" id="btn-div" onclick="selectMetodo('div')">÷ División y comparación</button>
+</div>
+<div id="metodo-area" style="flex:1;display:flex;gap:14px;overflow:hidden">
+  <div id="metodo-inicial" style="flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px">
+    <div style="font-family:'DM Serif Display',serif;font-size:clamp(40px,6vw,70px);color:var(--navy);display:flex;align-items:center;gap:24px">
+      <span style="display:inline-flex;flex-direction:column;align-items:center;gap:2px"><span>6</span><span style="border-top:3px solid var(--navy);width:100%"></span><span>9</span></span>
+      <span style="font-size:.7em;color:var(--text3)">≟</span>
+      <span style="display:inline-flex;flex-direction:column;align-items:center;gap:2px"><span>10</span><span style="border-top:3px solid var(--navy);width:100%"></span><span>15</span></span>
+    </div>
+    <div style="font-size:clamp(20px,2.2vw,26px);color:var(--text3);font-style:italic">Selecciona un método arriba para comenzar</div>
+  </div>
+  <div id="metodo-cruz" style="flex:1;flex-direction:column;gap:10px;display:none">
+    <div class="paso-card" id="cruz-0"><div class="paso-num">Paso 1 — Identificamos</div><div class="paso-text">Las dos fracciones que queremos comparar.</div><div class="paso-formula">\\( \\dfrac{6}{9} \\stackrel{?}{=} \\dfrac{10}{15} \\)</div></div>
+    <div class="paso-card" id="cruz-1"><div class="paso-num">Paso 2 — Primer producto cruzado</div><div class="paso-text">Numerador de la primera × denominador de la segunda.</div><div class="paso-formula">\\( 6 \\times 15 = \\mathbf{90} \\)</div></div>
+    <div class="paso-card" id="cruz-2"><div class="paso-num">Paso 3 — Segundo producto cruzado</div><div class="paso-text">Numerador de la segunda × denominador de la primera.</div><div class="paso-formula">\\( 10 \\times 9 = \\mathbf{90} \\)</div></div>
+    <div class="paso-card paso-result" id="cruz-3"><div class="paso-num">Conclusión</div><div class="paso-text">Los dos productos son iguales → <strong>son equivalentes</strong>.</div><div class="paso-formula" style="color:var(--green-s)">\\( 90 = 90 \\;\\Rightarrow\\; \\dfrac{6}{9} = \\dfrac{10}{15} \\checkmark \\)</div></div>
+  </div>
+  <div id="metodo-simpl" style="flex:1;flex-direction:column;gap:10px;display:none">
+    <div class="paso-card" id="simpl-0"><div class="paso-num">Paso 1 — MCD de la primera</div><div class="paso-text">Hallamos MCD(6, 9).</div><div class="paso-formula">\\( \\text{MCD}(6,\\,9) = 3 \\)</div></div>
+    <div class="paso-card" id="simpl-1"><div class="paso-num">Paso 2 — Irreducible de 6/9</div><div class="paso-text">Dividimos entre el MCD.</div><div class="paso-formula">\\( \\dfrac{6 \\div 3}{9 \\div 3} = \\dfrac{2}{3} \\)</div></div>
+    <div class="paso-card" id="simpl-2"><div class="paso-num">Paso 3 — Irreducible de 10/15</div><div class="paso-text">MCD(10, 15) = 5. Dividimos.</div><div class="paso-formula">\\( \\dfrac{10 \\div 5}{15 \\div 5} = \\dfrac{2}{3} \\)</div></div>
+    <div class="paso-card paso-result" id="simpl-3"><div class="paso-num">Conclusión</div><div class="paso-text">Ambas reducen a la misma fracción irreducible → <strong>son equivalentes</strong>.</div><div class="paso-formula" style="color:var(--green-s)">\\( \\dfrac{2}{3} = \\dfrac{2}{3} \\;\\Rightarrow\\; \\dfrac{6}{9} = \\dfrac{10}{15} \\checkmark \\)</div></div>
+  </div>
+  <div id="metodo-div" style="flex:1;flex-direction:column;gap:10px;display:none">
+    <div class="paso-card" id="div-0"><div class="paso-num">Paso 1 — Dividimos la primera</div><div class="paso-text">Numerador ÷ denominador de la primera fracción.</div><div class="paso-formula">\\( 6 \\div 9 = 0{,}666\\ldots \\)</div></div>
+    <div class="paso-card" id="div-1"><div class="paso-num">Paso 2 — Dividimos la segunda</div><div class="paso-text">Numerador ÷ denominador de la segunda fracción.</div><div class="paso-formula">\\( 10 \\div 15 = 0{,}666\\ldots \\)</div></div>
+    <div class="paso-card" id="div-2"><div class="paso-num">Paso 3 — Comparamos</div><div class="paso-text">Si los cocientes son iguales, las fracciones son equivalentes.</div><div class="paso-formula">\\( 0{,}666\\ldots = 0{,}666\\ldots \\)</div></div>
+    <div class="paso-card paso-result" id="div-3"><div class="paso-num">Conclusión</div><div class="paso-text">Cocientes idénticos → <strong>son equivalentes</strong>. El producto cruzado y la simplificación son más exactos.</div><div class="paso-formula" style="color:var(--green-s)">\\( \\dfrac{6}{9} = \\dfrac{10}{15} \\checkmark \\)</div></div>
+  </div>
+</div>
+<div style="text-align:center;font-size:19px;color:var(--text3);font-style:italic;margin-top:6px">Después de explorar los tres métodos, haz clic para continuar →</div>`},
+
+{bread:'Sesión 2 › Aplicación · GeoGebra — ¿Son equivalentes?',time:'APPLET · 8 min',
+fL:'GeoGebra — Verificación interactiva',clicks:0,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--amber)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--amber)">🎛️ Applet</div>
+    <div class="slide-title">¿Son equivalentes? — Verifica con GeoGebra</div>
+    <div class="slide-instr">Ingresa dos fracciones y observa el procedimiento. Anota tus conclusiones en el cuaderno.</div>
+  </div>
+</div>
+<div style="flex:1;display:flex;gap:18px;min-height:0;margin-top:8px">
+  <div style="width:26%;display:flex;flex-direction:column;gap:12px;flex-shrink:0">
+    <div style="background:#EEF5FB;border:2px solid var(--blue-mid);border-radius:12px;padding:14px 18px">
+      <div style="font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px">Prueba estos pares:</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,28px);line-height:2;color:var(--text)">3/4 y 9/12<br>2/5 y 6/16<br>5/8 y 15/24<br>4/7 y 8/13</div>
+    </div>
+    <div class="ggb-nota"><strong style="color:var(--teal);font-size:17px;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px">En tu cuaderno:</strong>1. ¿Cuál par es equivalente?<br>2. ¿Cuál no lo es?<br>3. ¿El applet usa el mismo método?</div>
+    <div style="background:#FFF7ED;border:2.5px solid var(--amber);border-radius:10px;padding:12px 16px">
+      <div style="font-size:17px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px">Reto</div>
+      <div style="font-size:clamp(20px,2.2vw,24px);color:var(--text);line-height:1.4">Inventa un par equivalente que no aparezca en clase. Verifícalo.</div>
+    </div>
+  </div>
+  <div style="flex:1;border-radius:14px;overflow:hidden;border:2px solid var(--border);background:#fff;min-height:0">
+    <iframe src="https://www.geogebra.org/material/iframe/id/SQP5y9h9/width/700/height/420/border/ffffff/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" style="width:100%;height:100%;border:none;display:block" loading="eager" allowfullscreen></iframe>
+  </div>
+</div>`},
+
+{bread:'Sesión 2 › Tú haces (10 min) › Práctica independiente',time:'TÚ HACES · 10 min',
+fL:'Tú haces — Trabajo independiente',clicks:4,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--red)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--red)">✍️ Tú haces</div>
+    <div class="slide-title">Demuestra lo que aprendiste — Individualmente</div>
+    <div class="slide-instr">Trabaja solo. Usa el método que prefieras. Muestra el procedimiento completo.</div>
+  </div>
+</div>
+<div class="hac-grid">
+  <div class="hac-card" style="border-top-color:var(--navy)" id="th1"><div class="hac-head"><div class="hac-n" style="background:var(--navy)">1</div><div class="hac-title">Simplifica</div></div><div class="hac-ctx">En la tienda escolar se vendieron 18 de 24 obleas. ¿Qué fracción irreducible representa lo vendido?</div><div class="latex-inline">18/24 = ?</div></div>
+  <div class="hac-card" style="border-top-color:var(--teal)" id="th2"><div class="hac-head"><div class="hac-n" style="background:var(--teal)">2</div><div class="hac-title">Amplifica</div></div><div class="hac-ctx">La ruta SITP Belén–Centro cubre 3/4 del recorrido en autopista. Escríbela con denominador 16.</div><div class="latex-inline">3/4 = ?/16</div></div>
+  <div class="hac-card" style="border-top-color:var(--amber)" id="th3"><div class="hac-head"><div class="hac-n" style="background:var(--amber)">3</div><div class="hac-title">Verifica</div></div><div class="hac-ctx">¿Son equivalentes 4/6 y 10/15? Usa el producto cruzado y la simplificación.</div><div class="latex-inline">4/6 ≟ 10/15</div></div>
+  <div class="hac-card" style="border-top-color:var(--purple)" id="th4"><div class="hac-head"><div class="hac-n" style="background:var(--purple)">★</div><div class="hac-title" style="color:var(--purple)">Profundización</div></div><div class="hac-ctx">Encuentra TRES fracciones equivalentes a 2/5 usando distintos múltiplos. Represéntalas en la recta numérica.</div><div class="latex-inline">2/5 = ?/? = ?/? = ?/?</div></div>
+</div>
+<div class="piar-note"><strong>Ajustes diferenciados (PIARs — 7.1 y 7.2)</strong>Eybril y Juan Pablo (7.2): solo tarjetas 1 y 2, con tira de papel como apoyo. Tiempo ampliado. Jerónimo y Matías (7.1): respuesta oral o dibujos. Sebastián (7.2): docente modela un ejemplo antes de la práctica independiente.</div>`,
+onReveal:n=>{const ids=['th1','th2','th3','th4'];document.getElementById(ids[n-1]).classList.add('vis');}},
+
+{bread:'Sesión 2 › Metacognición (5 min) › Semáforo',time:'METACOGNICIÓN · 5 min',
+fL:'Metacognición — Semáforo de comprensión',clicks:3,html:`
+<div class="title-row">
+  <div class="accent" style="background:var(--teal)"></div>
+  <div style="flex:1">
+    <div class="mbadge" style="background:var(--teal)">🚦 Metacognición</div>
+    <div class="slide-title">¿Cómo fue mi aprendizaje hoy?</div>
+  </div>
+</div>
+<div class="meta-layout">
+  <div class="meta-l">
+    <div class="meta-qbox"><div class="meta-qlbl">Pregunta metacognitiva de la semana</div><div class="meta-qtxt">«Antes de hoy, ¿cómo habrías intentado comprobar si dos fracciones eran iguales? ¿Qué cambia ahora que conoces el producto cruzado y la simplificación?»</div></div>
+    <div class="cuad-t">Escribe en tu cuaderno:</div>
+    <div class="cuad-items">
+      <div class="cuad-item"><div class="cuad-n">1.</div>¿Cuándo dos fracciones son equivalentes? Explica con tus palabras y un ejemplo propio.</div>
+      <div class="cuad-item"><div class="cuad-n">2.</div>¿Cuál paso te costó más: hallar el MCD, amplificar o verificar? ¿Por qué?</div>
+      <div class="cuad-item"><div class="cuad-n">3.</div>¿Para qué sirve saber si dos fracciones son equivalentes en una situación real?</div>
+    </div>
+  </div>
+  <div class="meta-r">
+    <div class="sema-t">Semáforo de comprensión:</div>
+    <div class="sema-items">
+      <div class="sema-item" id="sm1"><div class="sema-c" style="background:var(--green-s)"></div><div class="sema-txt">¡Lo entendí! Puedo explicarlo.<strong>Puedo enseñarle a alguien más.</strong></div></div>
+      <div class="sema-item" id="sm2"><div class="sema-c" style="background:var(--amber-s)"></div><div class="sema-txt">Casi. Tengo dudas en alguna parte.<strong>Necesito repasar un punto específico.</strong></div></div>
+      <div class="sema-item" id="sm3"><div class="sema-c" style="background:var(--red-s)"></div><div class="sema-txt">Necesito más práctica.<strong>Pido ayuda antes de la próxima sesión.</strong></div></div>
+    </div>
+    <div style="background:var(--navy);border-radius:12px;padding:16px 20px;margin-top:10px;font-size:clamp(20px,2.2vw,26px);color:#fff;font-style:italic;line-height:1.5">
+      💡 Para casa: Si tienes 8/12, ¿puedes hallar la fracción irreducible sin papel? ¿Existe más de una estrategia?
+    </div>
+  </div>
+</div>`,
+onReveal:n=>{document.getElementById('sm'+n).classList.add('vis');}},
+
+];
+
+let cur=0,clicks=0;
+const deck=document.getElementById('deck');
+const metodoPasos={cruz:['cruz-0','cruz-1','cruz-2','cruz-3'],simpl:['simpl-0','simpl-1','simpl-2','simpl-3'],div:['div-0','div-1','div-2','div-3']};
+let metodoActivo=null,metodoPaso=0;
+
+function selectMetodo(m){
+  ['cruz','simpl','div'].forEach(x=>{
+    document.getElementById('metodo-'+x).style.display='none';
+    document.getElementById('btn-'+x).className='metodo-btn';
+    metodoPasos[x].forEach(id=>{document.getElementById(id).style.display='none';});
+  });
+  metodoActivo=m;metodoPaso=0;
+  document.getElementById('metodo-inicial').style.display='none';
+  const el=document.getElementById('metodo-'+m);
+  el.style.display='flex';el.style.flexDirection='column';el.style.gap='10px';
+  document.getElementById('btn-'+m).classList.add('activo-'+m);
+  document.getElementById(metodoPasos[m][0]).style.display='block';
+  metodoPaso=1;
+  doKatex(document.getElementById('metodo-'+m));
+}
+
+function buildSlide(idx){
+  const s=SLIDES[idx];
+  const d=document.createElement('div');
+  d.className='slide'+(s.cls?' '+s.cls:'');
+  let h='';
+  if(!s.noH)h+=`<div class="hdr"><span class="hdr-b">${s.bread||''}</span>${s.time?`<span class="hdr-t">${s.time}</span>`:''}</div>`;
+  h+=`<div class="body">${s.html}</div>`;
+  if(!s.noF)h+=`<div class="ftr"><span>${s.fL||''}</span><span>I.E. Merceditas Gómez Martínez · Grado 7°</span></div>`;
+  d.innerHTML=h;return d;
+}
+
+function show(idx,dir){
+  const prev=deck.querySelector('.slide.active');
+  if(prev){prev.classList.remove('active','enter-r','enter-l');}
+  const el=buildSlide(idx);deck.appendChild(el);
+  const all=deck.querySelectorAll('.slide');if(all.length>3)all[0].remove();
+  requestAnimationFrame(()=>{
+    el.classList.add('active');el.classList.add(dir>=0?'enter-r':'enter-l');
+    setTimeout(()=>el.classList.remove('enter-r','enter-l'),380);
+    doKatex(el);
+    if(SLIDES[idx].onEnter)SLIDES[idx].onEnter();
+  });
+  clicks=0;metodoActivo=null;metodoPaso=0;
+  document.getElementById('ncnt').textContent=`${idx+1} / ${SLIDES.length}`;
+  document.getElementById('pbar').style.width=(((idx+1)/SLIDES.length)*100)+'%';
+}
+
+function doKatex(el){
+  if(window.renderMathInElement)renderMathInElement(el,{
+    delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true},{left:'$$',right:'$$',display:true}],
+    throwOnError:false
+  });
+}
+
+function advance(){
+  const s=SLIDES[cur];
+  const esMetodos=SLIDES[cur].html&&SLIDES[cur].html.includes('metodo-btns');
+  if(esMetodos){
+    if(!metodoActivo){
+      const btns=document.querySelectorAll('.metodo-btn');
+      btns.forEach(b=>{b.style.transition='box-shadow .15s';b.style.boxShadow='0 0 0 3px var(--amber)';});
+      setTimeout(()=>btns.forEach(b=>{b.style.boxShadow='';}),600);
+      return;
+    }
+    const pasos=metodoPasos[metodoActivo];
+    if(metodoPaso<pasos.length){document.getElementById(pasos[metodoPaso]).style.display='block';metodoPaso++;}
+    else{cur++;show(cur,1);}
+    return;
+  }
+  if(clicks<(s.clicks||0)){clicks++;if(s.onReveal)s.onReveal(clicks);return;}
+  if(cur<SLIDES.length-1){cur++;show(cur,1);}
+}
+function retreat(){if(cur>0){cur--;show(cur,-1);}}
+
+document.getElementById('fs-btn').addEventListener('click',()=>{
+  if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen().catch(()=>{});
+});
+document.addEventListener('fullscreenchange',()=>{document.getElementById('fs-btn').textContent=document.fullscreenElement?'✕':'⛶';});
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'||e.code==='ArrowRight'){e.preventDefault();advance();}
+  if(e.code==='ArrowLeft'){e.preventDefault();retreat();}
+  if(e.code==='KeyF')document.getElementById('fs-btn').click();
+});
+document.getElementById('bn').addEventListener('click',advance);
+document.getElementById('bp').addEventListener('click',retreat);
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?advance():retreat();}});
+setTimeout(()=>{document.getElementById('hint').style.opacity='0';},5000);
+document.addEventListener('katex-ready',()=>{const a=deck.querySelector('.slide.active');if(a)doKatex(a);});
+show(0,1);
+</script>
+</body>
+</html>
